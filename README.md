@@ -10,3 +10,5 @@ PostController.php 中的 $this->view('show', $data);
 
 
 DB連線資訊 只要改.env里的值即可
+
+http://127.0.0.1/113DBMS/public/?url=home
