@@ -2,7 +2,8 @@
 class Api {
     private array $routes = [
         'noRestriction' => [
-            'post/show' => ['PostController', 'show']
+            'post/show' => ['PostController', 'show'],
+            'home' => ['PageController','showHome']
         ],
         'hasLogin' => [
         ]
