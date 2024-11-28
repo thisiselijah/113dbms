@@ -26,7 +26,12 @@
                                     <li class="account_link_menu"><a href="#"><img src="assets/img/icon/person.png"
                                                 alt=""></a>
                                         <ul class="dropdown_account_link">
-                                            <li><a href="LogIn.html">Log in</a></li>
+                                            <li>
+                                                <a href="LogIn.html">Log in</a>
+                                            </li>
+                                            <li>
+                                                <a href=" ">Log out</a>
+                                            </li>
                                         </ul>
                                     </li>
                                 </ul>

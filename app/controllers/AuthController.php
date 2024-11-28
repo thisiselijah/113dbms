@@ -19,10 +19,17 @@ class AuthController extends Controller
         if ($this->UsersModel->getUsersByUsername($username, $password)) {
             session_start();
             $_SESSION['username'] = $username;
-            $this->redirect('/home');
+            $data = [
+                'username' => $username,
+                'login' => true
+            ];
+            extract($data);
+            $this->view('/home', $data);
         } else {    
-            $this->redirect('/auth/login');
+            // js alert
         }
+
+        
     }
 
     public function logout()
