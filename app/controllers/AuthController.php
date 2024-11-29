@@ -8,6 +8,7 @@ class AuthController extends Controller
         $this->UsersModel = $this->model('UsersModel');
     }
 
+
     public function login()
     {
         header('Content-Type: application/json');

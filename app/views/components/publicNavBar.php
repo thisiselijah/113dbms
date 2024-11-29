@@ -30,7 +30,7 @@
                                         if (isset($_SESSION['username'])) {
                                             echo '<li><a href="?url=logout">Log out</a></li>';
                                         } else {
-                                            echo '<li><a href="LogIn.html">Log in</a></li>';
+                                            echo '<li><a href="?url=loginPage">Log in</a></li>';
                                         }
                                         ?>
 

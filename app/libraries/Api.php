@@ -4,6 +4,7 @@ class Api {
         'noRestriction' => [
             'post/show' => ['PostController', 'show'],
             'home' => ['PageController','showHome'],
+            'loginPage' => ['PageController','showLoginPage'],
             'login' => ['AuthController', 'login'],
             
             

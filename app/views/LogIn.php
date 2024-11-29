@@ -1,5 +1,5 @@
+<?php require APP_ROOT . 'views/components/loginBar.php'; ?>
 <?php require APP_ROOT . 'views/include/LoginHeader.php'; ?>
-<?php require APP_ROOT . 'views/components/publicNavBar.php'; ?>
 
 <body>
     <div class="login-container">
