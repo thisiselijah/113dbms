@@ -3,7 +3,7 @@
 class Kernel
 {
 	public function __construct() {
-        try {
+    try {
             // get URL
 			$url = $this->getUrl();
 
