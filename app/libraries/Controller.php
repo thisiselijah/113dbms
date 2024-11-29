@@ -13,6 +13,7 @@ class Controller
 
     public function view($view, array $data = []): void
     {
+        
         if ($this->isViewExists($view)) {
             require_once ('../app/views/' . $view . '.php');
         } else {

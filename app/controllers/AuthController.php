@@ -5,28 +5,36 @@ class AuthController extends Controller
 
     public function __construct()
     {
-        $UsersModel = $this->model('UsersModel');
+        $this->UsersModel = $this->model('UsersModel');
     }
 
     public function login()
     {
-        $username = $this->retrievePostData()['username'];
-        $password = $this->retrievePostData()['password'];
-        // js user input validation
-        // session 
-    
+        
+        //session_unset();
+        // session_destroy();
 
-        if ($this->UsersModel->getUsersByUsername($username, $password)) {
+        header('Content-Type: application/json');
+        $postData = $this->retrievePostData();
+        $account = $postData['username'] ?? '';
+        $password = $postData['password'] ?? '';
+        
+        error_log("Received POST data: " . print_r($postData, true));
+
+        if ($this->UsersModel->getUsersByUsername($account, $password)) {
             session_start();
-            $_SESSION['username'] = $username;
-            $data = [
-                'username' => $username,
-                'login' => true
-            ];
-            extract($data);
-            $this->view('/home', $data);
+            $_SESSION['username'] = $account;
+            $_SESSION['login'] = true;
+
+            $this->redirect('../?url=home');
+            
         } else {    
-            // js alert
+            $response = [
+                'status' => 'error',
+                'message' => 'Invalid username or password'
+            ];
+            echo json_encode($response);
+            return;
         }
 
         
@@ -36,9 +44,8 @@ class AuthController extends Controller
     {
         session_unset();
         session_destroy();
-        $this->redirect('/home');
+        $this->redirect('?url=home');
     }
 
-    // 登出改
+    // 登出後回到首頁
 }
-?>
