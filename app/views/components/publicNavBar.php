@@ -4,13 +4,13 @@
             <div class="col-12">
                 <div class="main_header d-flex justify-content-between align-items-center">
                     <div class="header_logo">
-                        <a class="sticky_none" href="main.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                        <a class="sticky_none" href="?url=home"><img src="assets/img/logo/logo.png" alt=""></a>
                     </div>
                     <!--main menu start-->
                     <div class="main_menu d-none d-lg-block">
                         <nav>
                             <ul class="d-flex">
-                                <li><a class="active" href="main.html">Home</a></li> <!--按下menu會回到主頁面-->
+                                <li><a class="active" href="?url=home">Home</a></li> <!--按下menu會回到主頁面-->
 
                                 <li><a href="shop1.html">Shop </a></li> <!--按下會到商城-->
                             </ul>
