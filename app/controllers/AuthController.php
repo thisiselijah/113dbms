@@ -10,25 +10,18 @@ class AuthController extends Controller
 
     public function login()
     {
-        
-        //session_unset();
-        // session_destroy();
-
         header('Content-Type: application/json');
         $postData = $this->retrievePostData();
         $account = $postData['username'] ?? '';
         $password = $postData['password'] ?? '';
-        
-        error_log("Received POST data: " . print_r($postData, true));
+
+
 
         if ($this->UsersModel->getUsersByUsername($account, $password)) {
             session_start();
             $_SESSION['username'] = $account;
-            $_SESSION['login'] = true;
-
             $this->redirect('../?url=home');
-            
-        } else {    
+        } else {
             $response = [
                 'status' => 'error',
                 'message' => 'Invalid username or password'
@@ -37,14 +30,15 @@ class AuthController extends Controller
             return;
         }
 
-        
+        // error_log("Session data: " . print_r($_SESSION['username'], true));
     }
 
     public function logout()
     {
+        session_start();
         session_unset();
         session_destroy();
-        $this->redirect('?url=home');
+        $this->redirect('./?url=home');
     }
 
     // 登出後回到首頁

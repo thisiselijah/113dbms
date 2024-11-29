@@ -5,9 +5,11 @@ class Api {
             'post/show' => ['PostController', 'show'],
             'home' => ['PageController','showHome'],
             'login' => ['AuthController', 'login'],
-            'logout' => ['AuthController', 'logout'],
+            
+            
         ],
         'hasLogin' => [
+            'logout' => ['AuthController', 'logout']
         ]
     ];
 
