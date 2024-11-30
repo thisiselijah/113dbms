@@ -63,7 +63,7 @@
 
 
 
-    
+
     <!--header area end-->
 
     <!-- slider section start -->
@@ -85,7 +85,7 @@
                                 </div>
 
                                 <div class="slider_thumb">
-                                    <img src="assets/img/others/armchair2.png" style = "position:relative;left:200px" width = "700" height=" 600" alt="">
+                                    <img src="assets/img/others/armchair2.png" style="position:relative;left:200px" width="700" height=" 600" alt="">
                                 </div>
                             </div>
                             <div class="single_slider swiper-slide d-flex align-items-center">
@@ -254,7 +254,7 @@
     </section>
     <!-- featured section end-->
 
-   
+
 
     <!-- banner advice section start -->
     <section class="banner_advice_section mb-100">

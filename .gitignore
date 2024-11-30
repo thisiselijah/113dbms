@@ -1,1 +1,6 @@
 /app/.env
+/public/*.html
+/test/*
+/vendor/*
+composer.json
+composer.lock

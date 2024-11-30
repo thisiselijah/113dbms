@@ -3,9 +3,14 @@ class Api {
     private array $routes = [
         'noRestriction' => [
             'post/show' => ['PostController', 'show'],
-            'home' => ['PageController','showHome']
+            'home' => ['PageController','showHome'],
+            'loginPage' => ['PageController','showLoginPage'],
+            'login' => ['AuthController', 'login'],
+            
+            
         ],
         'hasLogin' => [
+            'logout' => ['AuthController', 'logout']
         ]
     ];
 
@@ -26,4 +31,3 @@ class Api {
     }
 }
 
-    
