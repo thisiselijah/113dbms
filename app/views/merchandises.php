@@ -1,36 +1,72 @@
 <?php
-    $merchandise_content = '';
-    // 使用 foreach 生成每個商品的 HTML
-    foreach ($data as $product) {
-        $merchandise_content .= '
+    $categories = $data['categories'];
+    $merchandises = $data['merchandises'];
+    // 商品生成函數
+    function generateMerchandiseHTML($merchandises) {
+        $content = '';
+        foreach ($merchandises as $product) {
+            $discounted_price = number_format($product['price'] * 0.8, 2); // 20% 折扣
+            $content .= <<<HTML
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <article class="single_product">
                     <figure>
                         <div class="product_thumb">
-                            <a href="single-product.php?id=' . $product['id'] . '"><img src="' . $product['image_path'] . '" alt="' . $product['name'] . '"></a>
+                            <a href="single-product.php?id={$product['id']}">
+                                <img src="{$product['image_path']}" alt="{$product['name']}">
+                            </a>
                             <div class="label_product">
                                 <span class="label_sale">Sale</span>
                             </div>
                         </div>
                         <figcaption class="product_content">
-                            <h4><a href="single-product.php?id=' . $product['id'] . '">' . $product['name'] . '</a></h4>
+                            <h4><a href="single-product.php?id={$product['id']}">{$product['name']}</a></h4>
                             <div class="price_box"> 
-                                <span class="old_price">NT ' . number_format($product['price'], 0) . '</span>
-                                <span class="current_price">' . number_format($product['price'] * 0.8, 0) . '</span> <!-- Example discount (20%) -->
+                                <span class="old_price">NT {$product['price']}</span>
+                                <span class="current_price">NT {$discounted_price}</span>
                             </div>
                         </figcaption>  
                     </figure>
                 </article>
-            </div>';
+            </div>
+            HTML;
+        }
+        return $content;
     }
     
-    $merchandise = <<<HTML
+    // 類別生成函數
+    function generateCategoryHTML($categories, $category_mapping) {
+        $content = '';
+        foreach ($categories as $item) {
+            $name = $category_mapping[$item['name']] ?? $item['name'];
+            $content .= <<<HTML
+            <li><a href="./?url=show/merchandises&category_id={$item['id']}">{$name} ({$item['item_count']})</a></li>
+            HTML;
+        }
+        return $content;
+    }    
+    
+    // 類別
+    $category_mapping = [
+        'chair' => '椅子',
+        'table' => '桌子',
+        'decoration' => '裝飾',
+        'bedding' => '臥室',
+        'lamps' => '燈具'
+    ];
+    $merchandise_content = generateMerchandiseHTML($merchandises);
+    $merchandiseCategories = generateCategoryHTML($categories, $category_mapping);
+    $merchandises = <<<HTML
     <div class="row">
         $merchandise_content
     </div>
     HTML;
-       
+    $category_list = <<<HTML
+    <ul>
+        $merchandiseCategories
+    </ul>
+    HTML;
 ?>
+    
 <?php require APP_ROOT . 'views/include/header.php'; ?>
 <body>
     <?php require APP_ROOT . 'views/components/publicNavBar.php'; ?>
@@ -60,11 +96,7 @@
                                 </div>
                                 <div class="widget_categories">
                                     <ul>
-                                        <li><a href="#">燈具(6)</a></li>
-                                        <li><a href="#">桌子(10)</a></li>
-                                        <li><a href="#">臥室(8)</a></li>
-                                        <li><a href="#">椅子(12)</a></li>
-                                        <li><a href="#">裝飾(14)</a></li>
+                                        <?=$category_list?>
                                     </ul>
                                 </div>
                             </div>
@@ -78,7 +110,7 @@
                         <div class="shop_right_sidaber">  
                             <div class="shop_gallery">
                                 <div class="row">
-                                    <?= $merchandise;?>
+                                    <?= $merchandises?>
                                 </div>
                             </div>
                             <div class="loding_bar">
