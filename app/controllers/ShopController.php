@@ -7,10 +7,27 @@ class ShopController extends Controller{
         $this->merchandiseModel = $this->model('Merchandises'); 
     }
 
-    public function showMerchandises(){
-        $merchandises = $this->merchandiseModel->getMerchandises();
-        $this->view('merchandises',$merchandises);
-        
+    public function showMerchandises() {
+        $getData = $this->retrieveGetData();
+        $categories = $this->merchandiseModel->getAllMerchandisesCount();
+        $merchandises = isset($getData['category_id']) && !empty($getData['category_id']) 
+            ? $this->merchandiseModel->getMerchandisesByCategoryId($getData['category_id']) 
+            : $this->merchandiseModel->getMerchandises();
+        $data = [
+            'categories' => $categories,
+            'merchandises' => $merchandises,
+        ];
+        $this->view('merchandises', $data);
+    }
+    
+
+    private function mergeMerchandises($merchandises, $categoriesCount) {
+        $countMap = array_column($categoriesCount, null, 'id');
+        foreach ($merchandises as &$merchandise) {
+            $id = $merchandise['id'];
+            $merchandise = array_merge($merchandise, $countMap[$id] ?? ['item_count' => 0]);
+        }
+        return $merchandises;
     }
 
 }
