@@ -264,7 +264,7 @@
                         <div class="banner_advice_text">
                             <h3 class="wow fadeInUp" data-wow-delay="0.1s" data-wow-duration="1.1s">New armchair <br> &
                                 pillow</h3>
-                            <a class="btn btn-link wow fadeInUp" href="shop1.html" data-wow-delay="0.2s"
+                            <a class="btn btn-link wow fadeInUp" href="./?url=show/merchandises" data-wow-delay="0.2s"
                                 data-wow-duration="1.2s">SHOP NOW</a>
                         </div>
                     </div>
