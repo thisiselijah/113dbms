@@ -12,7 +12,7 @@
                             <ul class="d-flex">
                                 <li><a class="active" href="?url=home">Home</a></li> <!--按下menu會回到主頁面-->
 
-                                <li><a href="shop1.html">Shop </a></li> <!--按下會到商城-->
+                                <li><a href="./?url=show/merchandises">Shop </a></li> <!--按下會到商城-->
                             </ul>
                         </nav>
                     </div>
