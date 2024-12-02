@@ -26,7 +26,7 @@
                                             alt=""></a>
                                     <ul class="dropdown_account_link">
                                         <?php
-                                        if (isset($_SESSION['username'])) {
+                                        if (isset($_SESSION['id'])) {
                                             echo '<li><a href="?url=logout">Log out</a></li>';
                                         } else {
                                             echo '<li><a href="?url=loginPage">Log in</a></li>';

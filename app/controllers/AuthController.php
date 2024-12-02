@@ -16,11 +16,13 @@ class AuthController extends Controller
         $account = $postData['username'] ?? '';
         $password = $postData['password'] ?? '';
 
+        $result = $this->UsersModel->getUsersByUsername($account, $password);
 
 
-        if ($this->UsersModel->getUsersByUsername($account, $password)) {
+        if ($result) {
             session_start();
-            $_SESSION['username'] = $account;
+            $id = $result['id'];
+            $_SESSION['id'] = $id;
             $this->redirect('../?url=home');
         } else {
             $response = [
