@@ -5,6 +5,17 @@ class ShopController extends Controller{
     private mixed $merchandiseModel;
     public function __construct() {
         $this->merchandiseModel = $this->model('Merchandises'); 
+        
+    }
+
+    public function showSingleProduct(){
+        $this->merchandiseReviews = $this->model('MerchandiseReviews');
+        $getData = $this->retrieveGetData();
+        $data = [
+            'merchandise' => $this->merchandiseModel->getMerchandiseById($getData['id']),
+            'reviews' => $this->merchandiseReviews->getReviewsByMerchandiseId($getData['id']),
+        ];
+        $this->view('single-product',$data);
     }
 
     public function showMerchandises() {
