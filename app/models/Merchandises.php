@@ -12,5 +12,29 @@ class Merchandises
         $this->db->query($query);
         return $this->db->getAll();
     }
+
+    public function getMerchandisesByCategoryId($category_id) {
+        $query = "SELECT * FROM `merchandises` WHERE `category_id` = :category_id";
+        $this->db->query($query);
+        $this->db->bind(':category_id', $category_id);
+        return $this->db->getAll();
+    }
+
+    public function getAllMerchandisesCount() {
+        $query = $query = "
+        SELECT 
+            c.id, 
+            c.name, 
+            COUNT(m.id) AS item_count
+        FROM 
+            `categories` c
+        LEFT JOIN 
+            `merchandises` m ON c.id = m.category_id
+        GROUP BY 
+            c.id
+        ";
+        $this->db->query($query);
+        return $this->db->getAll();
+    }
 }
 ?>
