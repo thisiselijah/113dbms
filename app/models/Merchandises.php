@@ -13,6 +13,13 @@ class Merchandises
         return $this->db->getAll();
     }
 
+    public function getMerchandiseById($id){
+        $query = "SELECT * FROM `merchandises` WHERE `id` = :id";
+        $this->db->query($query);
+        $this->db->bind(':id', $id);
+        return $this->db->getSingle();
+    }
+
     public function getMerchandisesByCategoryId($category_id) {
         $query = "SELECT * FROM `merchandises` WHERE `category_id` = :category_id";
         $this->db->query($query);

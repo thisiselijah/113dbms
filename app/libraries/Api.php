@@ -5,12 +5,15 @@ class Api {
             'post/show' => ['PostController', 'show'],
             'home' => ['PageController','showHome'],
             'show/merchandises' => ['ShopController','showMerchandises'],
+            'merchandises/merchandise' => ['ShopController','showSingleProduct'],
             'loginPage' => ['PageController','showLoginPage'],
             'login' => ['AuthController', 'login'],
             
         ],
         'hasLogin' => [
-            'logout' => ['AuthController', 'logout']
+            'logout' => ['AuthController', 'logout'],
+            'home' => ['PageController','showHome'],
+            'show/merchandises' => ['ShopController','showMerchandises'],
         ]
     ];
 
