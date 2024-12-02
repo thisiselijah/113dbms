@@ -4,9 +4,13 @@ class Api {
         'noRestriction' => [
             'post/show' => ['PostController', 'show'],
             'home' => ['PageController','showHome'],
-            'show/merchandises' => ['ShopController','showMerchandises']
+            'show/merchandises' => ['ShopController','showMerchandises'],
+            'loginPage' => ['PageController','showLoginPage'],
+            'login' => ['AuthController', 'login'],
+            
         ],
         'hasLogin' => [
+            'logout' => ['AuthController', 'logout']
         ]
     ];
 
@@ -27,4 +31,3 @@ class Api {
     }
 }
 
-    
