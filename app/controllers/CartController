@@ -1,0 +1,11 @@
+<?php
+class CartController extends Controller {
+    private $CartsModel;
+
+    public function __construct() {
+        $this->CartsModel = $this->model('CartsModel');
+    }
+
+    
+}
+?>
