@@ -2,11 +2,18 @@
 
 class Kernel
 {
+<<<<<<< HEAD
+	public function __construct() {
+    try {
+            // get URL
+			$url = $this->getUrl();
+=======
   public function __construct()
   {
     try {
       // get URL
       $url = $this->getUrl();
+>>>>>>> main
 
       // get API corresponding to the URL
       $api = new Api();

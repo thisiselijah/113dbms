@@ -1,6 +1,6 @@
 <?php require APP_ROOT . 'views/include/header.php'; ?>
-<?php require APP_ROOT . 'views/components/publicNavBar.php'; ?>
 <body>
+    <?php require APP_ROOT . 'views/components/publicNavBar.php'; ?>
     <!--mini cart-->
     <div class="mini_cart">
         <div class="cart_gallery">
@@ -65,7 +65,6 @@
 
 
     <!--header area end-->
-
     <!-- slider section start -->
     <section class="slider_section mb-170">
         <div class="container">
@@ -79,7 +78,7 @@
                                     <div class="slider_text_shape">
                                         <img src="assets/img/slider/slider-text-shape.png" alt="">
                                         <div class="slider_btn">
-                                            <a class="btn btn-link" href="shop-left-sidebar.html">SHOP NOW</a>
+                                            <a class="btn btn-link" href="./?url=show/merchandises">SHOP NOW</a>
                                         </div>
                                     </div>
                                 </div>
@@ -94,7 +93,7 @@
                                     <div class="slider_text_shape">
                                         <img src="assets/img/slider/slider-text-shape.png" alt="">
                                         <div class="slider_btn">
-                                            <a class="btn btn-link" href="shop-left-sidebar.html">SHOP NOW</a>
+                                            <a class="btn btn-link" href="./?url=show/merchandises">SHOP NOW</a>
                                         </div>
                                     </div>
                                 </div>
