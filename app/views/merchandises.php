@@ -11,7 +11,7 @@
                 <article class="single_product">
                     <figure>
                         <div class="product_thumb">
-                            <a href="single-product.php?id={$product['id']}">
+                            <a href="./?url=merchandises/merchandise&id={$product['id']}">
                                 <img src="{$product['image_path']}" alt="{$product['name']}">
                             </a>
                             <div class="label_product">
@@ -21,8 +21,7 @@
                         <figcaption class="product_content">
                             <h4><a href="single-product.php?id={$product['id']}">{$product['name']}</a></h4>
                             <div class="price_box"> 
-                                <span class="old_price">NT {$product['price']}</span>
-                                <span class="current_price">NT {$discounted_price}</span>
+                                <span class="current_price">NT {$product['price']}</span>
                             </div>
                         </figcaption>  
                     </figure>
