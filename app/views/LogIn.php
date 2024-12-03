@@ -4,7 +4,7 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form action="/public/?url=login" method="post">
+        <form action="public/?url=login" method="post">
             <label for="username">Username</label>
             <input
                 type="text"

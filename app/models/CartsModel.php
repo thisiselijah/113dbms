@@ -18,7 +18,7 @@ class CartsModel {
     }
 
     public function getUserCart() {
-        $user_id = $_SESSION['username'];
+        $user_id = $_SESSION['id'];
         $query = "SELECT * FROM carts WHERE user_id = :user_id";
         $this->db->query($query);
         $this->db->bind(':user_id', $user_id);

@@ -25,7 +25,7 @@ class AuthController extends Controller
             session_start();
             $id = $result['id'];
             $_SESSION['id'] = $id;
-            $this->redirect('../?url=home');
+            $this->redirect('?url=home');
         } else {
             $response = [
                 'status' => 'error',
