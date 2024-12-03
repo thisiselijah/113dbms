@@ -4,7 +4,7 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form action="public/?url=login" method="post">
+        <form action="/public/?url=login" method="post">
             <label for="username">Username</label>
             <input
                 type="text"
@@ -20,11 +20,9 @@
                 name="password"
                 placeholder="Enter your password"
                 required />
-
-            <button type="submit" onclick="showAlert()">Login</button>
+            <button type="submit" >Login</button>
         </form>
     </div>
-    <script src="assets/js/login.js"></script>
 </body>
 
 </html>

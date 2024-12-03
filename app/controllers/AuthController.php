@@ -16,6 +16,8 @@ class AuthController extends Controller
         $account = $postData['username'] ?? '';
         $password = $postData['password'] ?? '';
 
+        error_log("Session data: " . print_r($postData, true));
+
         $result = $this->UsersModel->getUsersByUsername($account, $password);
 
 
