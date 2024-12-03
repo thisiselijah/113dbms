@@ -16,6 +16,8 @@ class AuthController extends Controller
         $account = $postData['username'] ?? '';
         $password = $postData['password'] ?? '';
 
+        error_log("Session data: " . print_r($postData, true));
+
         $result = $this->UsersModel->getUsersByUsername($account, $password);
 
 
@@ -23,7 +25,7 @@ class AuthController extends Controller
             session_start();
             $id = $result['id'];
             $_SESSION['id'] = $id;
-            $this->redirect('../?url=home');
+            $this->redirect('?url=home');
         } else {
             $response = [
                 'status' => 'error',

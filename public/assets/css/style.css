@@ -900,6 +900,30 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 /*mini cart css here*/
+
+/*mini cart 數字icon*/
+.shopping_cart {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -10px; /* 調整位置以適配圖標 */
+  right: -10px; /* 調整位置以適配圖標 */
+  background-color: orange;
+  color: white;
+  border-radius: 50%; /* 將元素變成圓形 */
+  width: 20px; /* 固定寬度，確保圓形 */
+  height: 20px; /* 固定高度，確保圓形 */
+  line-height: 20px; /* 使文字垂直居中 */
+  text-align: center; /* 使文字水平居中 */
+  font-size: 12px;
+  font-weight: bold;
+  display: none; /* 默認隱藏 */
+}
+
+
+/*mini cart 其餘部分*/
 .mini_cart {
   position: fixed;
   width: 355px;
@@ -4644,8 +4668,28 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .product_gallery_thumb {
   border: 1px solid #D5D5D5;
+  border-radius: 10px;
   margin-bottom: 8px;
+  padding: 16px;
+  text-align: center;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+
+
 }
+
+/*主要用於Single product的限制邊框大小*/
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+
+
+
 
 .product_gallery_list {
   margin-right: 8px;
@@ -6228,3 +6272,85 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #ff0000;
 }
 
+.icon-star {
+  transform: scale(1.5); /* 放大 1.5 倍 */
+}
+/*搜尋列 end */
+
+
+/*商品目錄 */
+.category {
+  color: black;
+  text-decoration: none;
+}
+
+.category.active {
+  color: orange; /* 點擊後變成紅色 */
+  font-weight: bold; /* 可選，讓文字更明顯 */
+}
+/*商品目錄 end */
+
+
+
+/* 商品頁的頁數顏色顯示 */
+.pagination a {
+  color: #000;
+  text-decoration: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  margin: 0 5px;
+  border-radius: 50%;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a.active {
+  background-color: #ffc400;
+  color: #fff;
+  border-color:#ffc400;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #f0f0f0;
+}
+/* 商品頁的頁數顏色顯示 end*/
+
+
+
+/*單一商品頁的評分 包括商品和評論*/
+
+/* 確保容器保持適當間距 */
+.rating-container {
+  display: inline-block; /* 保持容器緊湊排列 */
+}
+
+/* 使星星水平排列 */
+.rating-stars {
+  display: flex; /* 使用 flex 排列星星 */
+  list-style: none; /* 移除列表樣式 */
+  padding: 0;
+  margin: 0;
+}
+
+/* 星星樣式 */
+.rating-stars li {
+  margin-right: 5px; /* 星星之間的間距 */
+}
+
+.rating-stars i {
+  font-size: 16px; /* 調整星星大小 */
+  color: #ccc; /* 預設灰色 */
+}
+
+.rating-stars i.active {
+  color: #f39c12; /* 激活的星星顏色 */
+}
+
+.rating-stars ul li {
+  display: inline-block;
+}
+
+/*單一商品頁的評分 包括商品和評論  結束*/

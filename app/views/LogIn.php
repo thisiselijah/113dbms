@@ -20,8 +20,7 @@
                 name="password"
                 placeholder="Enter your password"
                 required />
-
-            <button type="submit">Login</button>
+            <button type="submit" >Login</button>
         </form>
     </div>
 </body>
