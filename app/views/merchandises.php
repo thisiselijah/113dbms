@@ -67,7 +67,7 @@
     
 <?php require APP_ROOT . 'views/include/MainHeader.php'; ?>
 <body>
-    <?php require APP_ROOT . 'views/components/publicNavBar.php'; ?>
+    <?php require APP_ROOT . 'views/components/ShopBar.php'; ?>
     <!-- 搜尋列 -->
     <div class="search-container">
         <div class="search-bar">

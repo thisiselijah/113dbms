@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Order</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
+     <!-- Main Style CSS -->
+     <link rel="stylesheet" href="assets/css/checkout.css">
+
+    <!--modernizr min js here-->
+    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="header_section mb-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="main_header d-flex justify-content-between align-items-center">
+                        <div class="header_logo">
+                            <a class="sticky_none" href="main.html"><img src="assets/img/logo/logo.png" alt="Logo"></a>
+                        </div>
+                        <div class="main_menu d-none d-lg-block">
+                            <nav>
+                                <ul class="d-flex">
+                                    <li><a href="main.html">Home</a></li>
+                                    <li><a href="shop1.html">Shop</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header__ridebar d-flex align-items-center">
+                            <div class="header_account">
+                                <ul class="d-flex">
+                                    <li class="shopping_cart"><a href="#"><img src="assets/img/icon/cart.png" alt="Cart"></a></li>
+                                    <li class="account_link_menu"><a href="#"><img src="assets/img/icon/person.png"
+                                        alt=""></a>
+                                        <ul class="dropdown_account_link">
+                                            <li>
+                                                <a href="orderList.html">Order</a>
+                                            </li>
+                                            <li>
+                                                <a href="LogIn.html">Log in</a>
+                                            </li>
+                                            <li>
+                                                <a href=" ">Log out</a>
+                                            </li>
+                                         </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="canvas_open">
+                                <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Order Form Section -->
+    <div class="checkout-container">
+        <h2 class = "head-title">訂單編號 #1</h2>
+
+    <!-- Cart Items -->
+    </section>
+    <!-- Shopping Cart-->
+    <section class="section section-sm bg-default text-md-left">
+      <div class="container">
+        <h4 class="text-spacing-50">訂單內容</h4>
+        <!-- shopping-cart-->
+    <div class="table-custom-responsive">
+    <table class="table-custom table-cart">
+        <thead>
+        <tr>
+            <th>
+            <div class="table-cart-stepper">
+                <span>商品名稱</span>
+            </div>
+            </th>
+            <th>
+            <div class="table-cart-stepper">
+                <span>價格</span>
+            </div>
+            </th>
+            <th>
+            <div class="table-cart-stepper">
+                <span>數量</span>
+            </div>
+            </th>
+            <th>
+            <div class="table-cart-stepper">
+                <span>總額</span>
+            </div>
+            </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr class="cart-item">
+            <td>
+            <a class="table-cart-figure" href="single-product.html">
+                <img src="assets/img/product/decoration/LED 永生花束裝飾玻璃盅.jpg" alt="" class = "product-image"/>
+            </a>
+            <a class="table-cart-link" href="single-product.html">LED 永生花束裝飾玻璃盅</a>
+            </td>
+            <td>                            <!--資料庫連接的話改 data-price-->
+                <div class="table-cart-stepper product-price" data-price = "550">$550</div>   <!--單價 data-price是賦予商品價格-->
+            </td>
+            <td>
+            <div class="table-cart-stepper">      <!--數量-->
+                <span class="num">1</span>
+            </div>
+            </td>
+            <td>
+                <div class="table-cart-stepper total-price" >$550</div>   <!--總價-->
+            </td>
+           
+        </tr>
+        <tr class="cart-item">
+            <td>
+            <a class="table-cart-figure" href="single-product.html">
+                <img src="assets/img/product/chair/DAVI 單人布沙發-白.jpg" alt="" class = "product-image" />
+            </a>
+            <a class="table-cart-link" href="single-product.html">DAVI 單人布沙發-白</a>
+            </td>
+            <td>
+                <div class="table-cart-stepper product-price" data-price = "250">$250</div>
+            </td>
+            <td>
+            <div class="table-cart-stepper">      <!--數量-->
+                <span class="num">1</span>
+            </div>
+            </td>
+            <td>
+                <div class="table-cart-stepper total-price">$250</div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+    
+    <div class="total-amount">
+    總金額: <span id="total-amount">$750</span>
+    </div>
+    </div>
+
+    
+    <!-- Js 
+    ========================= -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+
+
+    <!-- Main JS -->
+    <script src="assets/js/checkout.js"></script>
+
+</body>
+</html>

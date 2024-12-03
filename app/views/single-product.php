@@ -36,7 +36,7 @@
 ?>
 <?php require APP_ROOT . 'views/include/MainHeader.php'; ?>
 <body>
-<?php require APP_ROOT . 'views/components/publicNavBar.php'; ?>
+<?php require APP_ROOT . 'views/components/ShopBar.php'; ?>
     <!-- product gallery section start -->
     <div class="product_gallery_section">
         <div class="container">
