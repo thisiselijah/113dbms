@@ -34,7 +34,7 @@
    $averageStarsFilled = str_repeat('<li><a href="#"><i class="ion-star"></i></a></li>', $averageRank);
    $averageStarsEmpty = str_repeat('<li><a href="#"><i class="ion-ios-star-outline"></i></a></li>', 5 - $averageRank);
 ?>
-<?php require APP_ROOT . 'views/include/header.php'; ?>
+<?php require APP_ROOT . 'views/include/MainHeader.php'; ?>
 <body>
 <?php require APP_ROOT . 'views/components/publicNavBar.php'; ?>
     <!-- product gallery section start -->

@@ -1,4 +1,4 @@
-<?php require APP_ROOT . 'views/include/header.php'; ?>
+<?php require APP_ROOT . 'views/include/MainHeader.php'; ?>
 <?php require APP_ROOT . 'views/components/publicNavBar.php'; ?>
 
 
