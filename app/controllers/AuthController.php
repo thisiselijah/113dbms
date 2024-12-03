@@ -12,6 +12,7 @@ class AuthController extends Controller
     public function login()
     {
         header('Content-Type: application/json');
+        ob_clean();
         $postData = $this->retrievePostData();
         $account = $postData['username'] ?? '';
         $password = $postData['password'] ?? '';
@@ -22,10 +23,15 @@ class AuthController extends Controller
 
 
         if ($result) {
-            session_start();
+            // session_start();
             $id = $result['id'];
             $_SESSION['id'] = $id;
-            $this->redirect('?url=home');
+            $response = [
+                'status' => 'success',
+                'message' => 'Login successful'
+            ];
+            echo json_encode($response);
+            // $this->redirect('?url=home');
         } else {
             $response = [
                 'status' => 'error',
