@@ -20,25 +20,16 @@ class ShopController extends Controller{
 
     public function showMerchandises() {
         $getData = $this->retrieveGetData();
-        $categories = $this->merchandiseModel->getAllMerchandisesCount();
+        $categories = $this->merchandiseModel->getAllMerchandiseCategoryCount();
         $merchandises = isset($getData['category_id']) && !empty($getData['category_id']) 
-            ? $this->merchandiseModel->getMerchandisesByCategoryId($getData['category_id']) 
-            : $this->merchandiseModel->getMerchandises();
+            ? $this->merchandiseModel->getMerchandisesByCategoryId($getData['category_id'],isset($getData['page']) ? (int)$getData['page'] : 1) 
+            : $this->merchandiseModel->getLimitMerchandises(isset($getData['page']) ? (int)$getData['page'] : 1);
         $data = [
             'categories' => $categories,
             'merchandises' => $merchandises,
+            'merchandisesCount' => $this->merchandiseModel->getAllMerchandiseCount(),
         ];
         $this->view('merchandises', $data);
-    }
-    
-
-    private function mergeMerchandises($merchandises, $categoriesCount) {
-        $countMap = array_column($categoriesCount, null, 'id');
-        foreach ($merchandises as &$merchandise) {
-            $id = $merchandise['id'];
-            $merchandise = array_merge($merchandise, $countMap[$id] ?? ['item_count' => 0]);
-        }
-        return $merchandises;
     }
 
 }
