@@ -66,7 +66,7 @@
     HTML;
 ?>
     
-<?php require APP_ROOT . 'views/include/header.php'; ?>
+<?php require APP_ROOT . 'views/include/MainHeader.php'; ?>
 <body>
     <?php require APP_ROOT . 'views/components/publicNavBar.php'; ?>
     <!-- 搜尋列 -->
