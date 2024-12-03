@@ -1,5 +1,5 @@
-<?php require APP_ROOT . 'views/include/MainHeader.php'; ?>
-<?php require APP_ROOT . 'views/components/publicNavBar.php'; ?>
+<?php require APP_ROOT . 'views/include/ShopHeader.php'; ?>
+<?php require APP_ROOT . 'views/components/ShopBar.php'; ?>
 
 
 <body>
@@ -132,14 +132,14 @@
                             <div class="shop_widget_list categories">
                                 <div class="shop_widget_title categories_title">
                                     <h2>目錄</h2>
-                                </div>
-                                <div class="widget_categories">
+                                </div>                              <!--這裡要能跟據所選顏色改變-->
+                                <div class="widget_categories">     <!--商品目錄-->
                                     <ul>
-                                        <li><a href="#">燈具(6)</a></li>
-                                        <li><a href="#">桌子(10)</a></li>
-                                        <li><a href="#">臥室(8)</a></li>
-                                        <li><a href="#">椅子(12)</a></li>
-                                        <li><a href="#">裝飾(14)</a></li>
+                                        <li><a href="#" class="category">燈具(6)</a></li>
+                                        <li><a href="#" class="category">桌子(10)</a></li>
+                                        <li><a href="#" class="category">臥室(8)</a></li>
+                                        <li><a href="#" class="category">椅子(12)</a></li>
+                                        <li><a href="#" class="category">裝飾(14)</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -313,15 +313,8 @@
                                     
                                 </div>
                             </div>
-                            <div class="loding_bar">
-                                <ul class="d-flex justify-content-center">
-                                    <li><a href="#">01</a></li>
-                                    <li><a href="shop2.html">02</a></li>
-                                    <li><a href="#">03</a></li>
-                                    <li><a href="#">04</a></li>
-                                    <li><a href="#">...</a></li>
-                                    <li><a href="#"><i class="ion-ios-arrow-right"></i></a></li>
-                                </ul>
+                            <div class="loding_bar">        <!--這裡要能隨著頁數改-->
+                                <ul class="d-flex justify-content-center pagination"></ul>  <!--商品頁 主要以jquery動態改變-->
                             </div>
                         </div>
                     </div>
@@ -354,6 +347,8 @@
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/minicart.js"></script>
+    <script src="assets/js/shop.js"></script>
 
 </body>
 </html>

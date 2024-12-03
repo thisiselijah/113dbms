@@ -1,6 +1,6 @@
 <?php require APP_ROOT . 'views/include/MainHeader.php'; ?>
 <body>
-    <?php require APP_ROOT . 'views/components/publicNavBar.php'; ?>
+    <?php require APP_ROOT . 'views/components/MainBar.php'; ?>
     <!--mini cart-->
     <section class="slider_section mb-170">
         <div class="container">

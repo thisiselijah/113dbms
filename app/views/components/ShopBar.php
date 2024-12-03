@@ -10,9 +10,9 @@
                     <div class="main_menu d-none d-lg-block">
                         <nav>
                             <ul class="d-flex">
-                                <li><a class="active" href="?url=home">Home</a></li> <!--按下menu會回到主頁面-->
+                                <li><a href="?url=home">Home</a></li> <!--按下menu會回到主頁面-->
 
-                                <li><a href="./?url=show/merchandises">Shop </a></li> <!--按下會到商城-->
+                                <li><a class="active" href="./?url=show/merchandises">Shop </a></li> <!--按下會到商城-->
                             </ul>
                         </nav>
                     </div>
@@ -25,6 +25,9 @@
                                 <li class="account_link_menu"><a href="#"><img src="assets/img/icon/person.png"
                                             alt=""></a>
                                     <ul class="dropdown_account_link">
+                                        <li>
+                                            <a href="orderList.html">Order</a>
+                                        </li>
                                         <?php
                                         if (isset($_SESSION['id'])) {
                                             echo '<li><a href="?url=logout">Log out</a></li>';
@@ -32,7 +35,6 @@
                                             echo '<li><a href="?url=loginPage">Log in</a></li>';
                                         }
                                         ?>
-
                                     </ul>
                                 </li>
                             </ul>
@@ -50,7 +52,7 @@
     <div class="cart_gallery">
         <div class="cart_close">
             <div class="cart_text">
-                <h3>cart</h3>
+                <h3>購物車</h3>
             </div>
             <div class="mini_cart_close">
                 <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
@@ -83,11 +85,11 @@
         <div class="mini_cart_table">
             <div class="cart_table_border">
                 <div class="cart_total">
-                    <span>Sub total:</span>
+                    <span>小計:</span>
                     <span class="price">$$total</span>
                 </div>
                 <div class="cart_total mt-10">
-                    <span>total:</span>
+                    <span>總計:</span>
                     <span class="price">$$total</span>
                 </div>
             </div>
@@ -97,10 +99,7 @@
         ?>
         <div class="mini_cart_footer">
             <div class="cart_button">
-                <a href="#"><i class="fa fa-shopping-cart"></i> View cart</a>
-            </div>
-            <div class="cart_button">
-                <a href="#"><i class="fa fa-sign-in"></i> Checkout</a>
+                <a href="#"><i class="fa fa-sign-in"></i> 結帳</a>
             </div>
         </div>
     </div>
