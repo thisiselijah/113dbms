@@ -19,8 +19,9 @@
 ### How to start?
 ---
 
-1. 啟動apache and mysql server in XAMPP
-2. 開啟phpMyadmin 匯入 ```FERNITURE_DB_sql```
-3. Browser 輸入 http://127.0.0.1/113DBMS/public/?url=home
+1. 啟動 apache and mysql server in XAMPP
+2. clone this repo to path: xampp/htdocs
+3. 開啟 phpMyadmin 匯入 ```FERNITURE_DB.sql``` 
+4. Browser 輸入 http://127.0.0.1/113DBMS/public/?url=home
 
 
