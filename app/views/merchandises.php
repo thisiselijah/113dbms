@@ -5,7 +5,6 @@
     function generateMerchandiseHTML($merchandises) {
         $content = '';
         foreach ($merchandises as $product) {
-            $discounted_price = number_format($product['price'] * 0.8, 2); // 20% 折扣
             $content .= <<<HTML
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <article class="single_product">
@@ -112,14 +111,11 @@
                                     <?= $merchandises?>
                                 </div>
                             </div>
+                           
                             <div class="loding_bar">
                                 <ul class="d-flex justify-content-center">
-                                    <li><a href="#">01</a></li>
-                                    <li><a href="shop2.html">02</a></li>
-                                    <li><a href="#">03</a></li>
-                                    <li><a href="#">04</a></li>
-                                    <li><a href="#">...</a></li>
-                                    <li><a href="#"><i class="ion-ios-arrow-right"></i></a></li>
+                                     <!---page number-->
+                                     <?php require APP_ROOT . 'views/components/pageNumber.php'; ?>
                                 </ul>
                             </div>
                         </div>
