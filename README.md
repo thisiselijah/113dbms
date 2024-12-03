@@ -1,7 +1,5 @@
 # 資料庫專題
 
-http://127.0.0.1/113DBMS/public/?url=home
-
 ### To-do List
 - [x] 連接資料庫
 - [x] build api
@@ -19,6 +17,8 @@ http://127.0.0.1/113DBMS/public/?url=home
 - [ ] 查看訂單
 
 ### How to start?
+---
+
 1. 啟動apache and mysql server in XAMPP
 2. 開啟phpMyadmin 匯入 ```FERNITURE_DB_sql```
 3. Browser 輸入 http://127.0.0.1/113DBMS/public/?url=home
