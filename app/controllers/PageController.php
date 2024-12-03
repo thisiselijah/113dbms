@@ -30,20 +30,20 @@ class PageController extends Controller{
             if (isset($data[$merchandise_id])) {
                 $data[$merchandise_id] += $quantity;
             } else {
-                $data[$merchandise_id]['quantity'] = $quantity;
                 $merchandisesData = $this->Merchandises->getMerchandiseById($merchandise_id);
                 $image_path = $merchandisesData['image_path'];
                 $price = $merchandisesData['price'];
                 $merchandise_name = $merchandisesData['name'];
-                $data[$merchandise_id]['image_path']= $image_path;
-                $data[$merchandise_id]['price'] = $price;
-                $data[$merchandise_id]['name'] = $merchandise_name;
 
-                
+                $data[$merchandise_id] = [
+                    'quantity' => $quantity,
+                    'image_path' => $image_path,
+                    'price' => $price,
+                    'name' => $merchandise_name
+                ];
             }
             
         }
-        
         $this->view('homepage', $data);
     }
 }

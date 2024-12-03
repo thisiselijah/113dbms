@@ -32,4 +32,6 @@ class ShopController extends Controller{
         $this->view('merchandises', $data);
     }
 
+    
+
 }
