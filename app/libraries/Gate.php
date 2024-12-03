@@ -20,7 +20,7 @@ class Gate
 
     public function hasLogin(): bool
     {
-        return isset($_SESSION['username']) && !empty($_SESSION['username']);
+        return isset($_SESSION['id']) && !empty($_SESSION['id']);
     }
 
     

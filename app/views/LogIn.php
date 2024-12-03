@@ -21,9 +21,10 @@
                 placeholder="Enter your password"
                 required />
 
-            <button type="submit">Login</button>
+            <button type="submit" onclick="showAlert()">Login</button>
         </form>
     </div>
+    <script src="assets/js/login.js"></script>
 </body>
 
 </html>
