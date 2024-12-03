@@ -18,8 +18,10 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
                 timer: 2000,
                 timerProgressBar: true,
             });
-        } 
-        redirect();
+        } else{
+            redirect();
+        }
+        
     })
     .catch(error => console.error('Error:', error));
 });
