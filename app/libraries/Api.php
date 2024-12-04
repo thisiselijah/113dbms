@@ -14,6 +14,8 @@ class Api {
             'logout' => ['AuthController', 'logout'],
             'home' => ['PageController','showHome'],
             'show/merchandises' => ['ShopController','showMerchandises'],
+            'cart/fetch' => ['PageController','getCart'],
+            'cart/add' => ['PageController','addItem']
         ]
     ];
 

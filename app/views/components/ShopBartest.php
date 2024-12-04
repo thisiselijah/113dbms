@@ -111,24 +111,6 @@
                 .catch((error) => console.error("Error fetching cart data:", error));
         }, []);
 
-        React.useEffect(() => {
-            // Shopping Cart toggle
-            $('.shopping_cart > a').on('click', function() {
-                $('.mini_cart, .body_overlay').addClass('active');
-            });
-
-            $('.mini_cart_close a, .body_overlay').on('click', function() {
-                $('.mini_cart, .body_overlay').removeClass('active');
-            });
-
-            // 清理 jQuery 事件
-            return () => {
-                $('.shopping_cart > a').off('click');
-                $('.mini_cart_close a, .body_overlay').off('click');
-            };
-        }, []);
-        
-
         const merchandiseItems = Object.entries(cartItems).map(([id, item]) => ({
             id,
             name: item.name,
@@ -168,4 +150,5 @@
 
     ReactDOM.render(<Cart />, document.getElementById("cart"));
 </script>
+
 </header>
