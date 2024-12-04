@@ -1,3 +1,7 @@
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
 <header class="header_section mb-30">
     <div class="container">
         <div class="row">
@@ -47,62 +51,121 @@
             </div>
         </div>
 </header>
-<!--mini cart-->
-<div class="mini_cart">
-    <div class="cart_gallery">
-        <div class="cart_close">
-            <div class="cart_text">
-                <h3>購物車</h3>
-            </div>
-            <div class="mini_cart_close">
-                <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
-            </div>
-        </div>
-        <?php
-            // print_r($data);
-            $total = 0;
-            foreach($data as $dataItem){
-                $total += $dataItem['quantity']*$dataItem['price'];
-                $cartItem = <<<HTML
-                <div class="cart_item">
-                    <div class="cart_img">
-                        <a href="#"><img src="{$dataItem['image_path']}" alt=""></a>
-                    </div>
-                    <div class="cart_info">
-                        <a href="#">{$dataItem['name']}</a>
-                        <p>{$dataItem['quantity']} x <span> $ {$dataItem['price']} </span></p>
-                    </div>
-                    <div class="cart_remove">
-                        <a href="#"><i class="icon-close icons"></i></a>
-                    </div>
+
+<div class="mini_cart" id="cart"></div>
+<script type="text/babel">
+    const Card = (props) => {
+        return (
+            <div className="cart_item">
+                <div className="cart_img">
+                    <a href="#">
+                        <img src={props.image_path} alt="" />
+                    </a>
                 </div>
-                HTML;
-                echo $cartItem;
-            }
-       
-        $cartfooter = <<<HTML
-        </div>
-        <div class="mini_cart_table">
-            <div class="cart_table_border">
-                <div class="cart_total">
-                    <span>小計:</span>
-                    <span class="price">$$total</span>
+                <div className="cart_info">
+                    <a href="#">{props.name}</a>
+                    <p>
+                        {props.quantity} x <span> $ {props.price} </span>
+                    </p>
                 </div>
-                <div class="cart_total mt-10">
-                    <span>總計:</span>
-                    <span class="price">$$total</span>
+                <div className="cart_remove">
+                    <a href="#">
+                        <i className="icon-close icons"></i>
+                    </a>
                 </div>
             </div>
-        </div>
-        HTML;
-        echo $cartfooter;
-        ?>
-        <div class="mini_cart_footer">
-            <div class="cart_button">
-                <a href="#"><i class="fa fa-sign-in"></i> 結帳</a>
+        );
+    };
+
+    const Merchandise = (props) => {
+        const renderCards = () => {
+            return props.items.map((item, index) => <Card key={index} {...item} />);
+        };
+        return renderCards();
+    };
+
+    const Sum = ({ total }) => {
+        return (
+            <div className="mini_cart_table">
+                <div className="cart_table_border">
+                    <div className="cart_total">
+                        <span>小計:</span>
+                        <span className="price">${total}</span>
+                    </div>
+                    <div className="cart_total mt-10">
+                        <span>總計:</span>
+                        <span className="price">${total}</span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <!--mini cart end-->
-</div>
+        );
+    };
+
+    const Cart = () => {
+        const [cartItems, setCartItems] = React.useState([]);
+
+        React.useEffect(() => {
+            fetch("?url=cart/fetch")
+                .then((response) => response.json())
+                .then((data) => setCartItems(data))
+                .catch((error) => console.error("Error fetching cart data:", error));
+        }, []);
+
+        React.useEffect(() => {
+            // Shopping Cart toggle
+            $('.shopping_cart > a').on('click', function() {
+                $('.mini_cart, .body_overlay').addClass('active');
+            });
+
+            $('.mini_cart_close a, .body_overlay').on('click', function() {
+                $('.mini_cart, .body_overlay').removeClass('active');
+            });
+
+            // 清理 jQuery 事件
+            return () => {
+                $('.shopping_cart > a').off('click');
+                $('.mini_cart_close a, .body_overlay').off('click');
+            };
+        }, []);
+        
+
+        const merchandiseItems = Object.entries(cartItems).map(([id, item]) => ({
+            id,
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+            image_path: item.image_path,
+        }));
+
+        const totalSum = merchandiseItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+        return (
+            <div className="mini_cart">
+                <div className="cart_gallery">
+                    <div className="cart_close">
+                        <div className="cart_text">
+                            <h3>購物車</h3>
+                        </div>
+                        <div className="mini_cart_close">
+                            <a href="javascript:void(0)">
+                                <i className="ion-android-close"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <Merchandise items={merchandiseItems} />
+                    
+                </div>
+                <Sum total={totalSum} />
+                    <div class="mini_cart_footer">
+                        <div class="cart_button">
+                            <a href="#"><i class="fa fa-sign-in"></i> 結帳</a>
+                        </div>
+                    </div>
+            </div>
+            
+        );
+    };
+
+    ReactDOM.render(<Cart />, document.getElementById("cart"));
+</script>
 </header>

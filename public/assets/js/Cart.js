@@ -43,6 +43,8 @@ return (
 );
 };
 
+// ReactDOM.render(<Cart />, document.getElementById('cart'));
+
 export default Cart;
 
 
