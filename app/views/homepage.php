@@ -116,7 +116,6 @@
                         <div class="single_shipping">
                             <div class="shipping_title d-flex align-items-center wow fadeInUp" data-wow-delay="0.1s"
                                 data-wow-duration="1.1s">
-                                <img src="assets/img/others/shipping1.png" alt="">
                                 <h3>多種的選擇</h3>
                             </div>
                             <div class="shipping_desc wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1.2s">
@@ -126,7 +125,6 @@
                         <div class="single_shipping">
                             <div class="shipping_title d-flex align-items-center wow fadeInUp" data-wow-delay="0.1s"
                                 data-wow-duration="1.1s">
-                                <img src="assets/img/others/shipping2.png" alt="">
                                 <h3>良好的品質</h3>
                             </div>
                             <div class="shipping_desc wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1.2s">
@@ -136,7 +134,7 @@
                         <div class="single_shipping">
                             <div class="shipping_title d-flex align-items-center wow fadeInUp" data-wow-delay="0.1s"
                                 data-wow-duration="1.1s">
-                                <img src="assets/img/others/shipping3.png" alt="">
+
                                 <h3>實惠的價格</h3>
                             </div>
                             <div class="shipping_desc wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1.2s">
