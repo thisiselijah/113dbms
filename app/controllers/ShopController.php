@@ -3,6 +3,7 @@
 class ShopController extends Controller{
 
     private mixed $merchandiseModel;
+    private mixed $merchandiseReviews;
     public function __construct() {
         $this->merchandiseModel = $this->model('Merchandises'); 
         

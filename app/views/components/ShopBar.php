@@ -103,13 +103,20 @@
 
     const Cart = () => {
         const [cartItems, setCartItems] = React.useState([]);
+        const [trigger, setTrigger] = React.useState(1);
 
         React.useEffect(() => {
             fetch("?url=cart/fetch")
                 .then((response) => response.json())
                 .then((data) => setCartItems(data))
                 .catch((error) => console.error("Error fetching cart data:", error));
-        }, []);
+        }, [trigger]);
+
+        window.addValue = () => {
+            setTrigger((prev) => prev + 1);
+            console.log("triggered");
+        };
+
 
         React.useEffect(() => {
             // Shopping Cart toggle
