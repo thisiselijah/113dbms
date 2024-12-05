@@ -81,20 +81,41 @@ class PageController extends Controller{
     }
 
     public function addItem(){
-        $postData = $this->retrievePostData();
         $postData = json_decode(file_get_contents('php://input'), true);
         error_log(print_r($postData, true));
         $merchandise_id = $postData['merchandise_id'] ?? '';
         $quantity = $postData['quantity'] ?? '';
         $this->CartsModel = $this->model('CartsModel');
-        $this->CartsModel->addItem($merchandise_id, $quantity);
-        $response = [
-            'status' => 'success',
-            'message' => 'Item added to cart'
-        ];  
-        header('Content-Type: application/json');
-        ob_clean();
-        echo json_encode($response);
+        $this->Merchandises = $this->model('Merchandises');
+        $merchandise = $this->Merchandises->getMerchandiseById($merchandise_id);
+        $stock_quantity = $merchandise['stock_quantity'];
+
+        $userquantity = $this->CartsModel->getUserQuantity($merchandise_id);
+
+        
+        error_log(print_r($userquantity, true));
+
+
+        if (($quantity > $stock_quantity) || (($userquantity + $quantity) > $stock_quantity)) {
+            $response = [
+                'status' => 'error',
+                'message' => 'Quantity exceeds stock quantity'
+            ];
+            header('Content-Type: application/json');
+            ob_clean();
+            echo json_encode($response);
+            return;
+        }else{
+            $this->CartsModel->addItem($merchandise_id, $quantity);
+            $response = [
+                'status' => 'success',
+                'message' => 'Item added to cart'
+            ];  
+            header('Content-Type: application/json');
+            ob_clean();
+            echo json_encode($response);
+            return;
+        }
 
     }
 }
