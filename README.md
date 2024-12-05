@@ -16,12 +16,32 @@
 - [ ] 送出訂單
 - [ ] 查看訂單
 
-### How to start?
+### Intro
+---
+
+
+### How to start it?
 ---
 
 1. 啟動 apache and mysql server in XAMPP
 2. clone this repo to path: xampp/htdocs
-3. 開啟 phpMyadmin 匯入 ```FERNITURE_DB.sql``` 
-4. Browser 輸入 http://127.0.0.1/113DBMS/public/?url=home
+3. cd into repo dir path
+4. add an ```.env``` file in path: ```app/```
+5. 開啟 phpMyadmin 匯入 ```FERNITURE_DB.sql```
+7. 在 Browser 輸入 http://127.0.0.1/113DBMS/public/?url=home
+
+### In the .env
+---
+
+You need to type the following content:
+
+```
+DB_TYPE=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_NAME=FURNITURE_DB
+DB_USER=[your_username]
+DB_PASS=[your_password]
+```
 
 
