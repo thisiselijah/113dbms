@@ -24,8 +24,11 @@ echo <<<HTML
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
     <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
 
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+
     
     <!--modernizr min js here-->
     <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
@@ -39,5 +42,6 @@ echo <<<HTML
         "url": "Replace_with_your_site_URL"
         }
     </script>
+    
 </head>
 HTML;

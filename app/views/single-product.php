@@ -91,7 +91,7 @@
                             <div class="pro-qty border">
                                 <input id="num" min="1" max="<?= $data['merchandise']['stock_quantity']; ?>" type="submit" value="1" style="background-color: white;">
                             </div>
-                            <button class="btn btn-link" onclick="addItem()">add to cart</button> 
+                            <button class="btn btn-link" type="submit" onclick="addItem()">add to cart</button> 
                             <script>
                                 var num = document.getElementById('num');
                                 const addItem = () => {
@@ -105,10 +105,34 @@
                                             quantity: num.value
                                         })
                                     }).then(response => {
-                                        window.addValue(); 
+                                        response.json().then(data => {
+                                            if (data.status === 'error') {
+                                                // alert(data.message);
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    text: data.message,
+                                                    title: '超出購買上限',
+                                                    timer: 2000,
+                                                    timerProgressBar: true,
+                                                });
+                                            } else {
+                                                Swal.fire({
+                                                    icon: 'success',
+                                                    text: data.message,
+                                                    title: '成功加入購物車',
+                                                    timer: 2000,
+                                                    timerProgressBar: true,
+                                                }).then(() => {
+                                                    window.addValue(); 
+                                                });
+                                                
+                                            }
+                                        });
+                                        
                                     });
                                 };
                             </script> 
+                            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                         </div>
                     </div>
                 </div>
