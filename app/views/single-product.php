@@ -81,6 +81,7 @@
                         </form>
                     </div>
                 </div>
+
                 <div class="col-lg-5">
                     <div class="product_details_right">
                         <div class="product_d_meta">
@@ -88,9 +89,26 @@
                         </div>
                         <div class="product_variant_quantity d-flex align-items-center">
                             <div class="pro-qty border">
-                                <input min="1" max="<?= $data['merchandise']['stock_quantity']; ?>" type="number" value="1">
+                                <input id="num" min="1" max="<?= $data['merchandise']['stock_quantity']; ?>" type="submit" value="1" style="background-color: white;">
                             </div>
-                            <button class="btn btn-link" type="submit">add to cart</button>  
+                            <button class="btn btn-link" onclick="addItem()">add to cart</button> 
+                            <script>
+                                var num = document.getElementById('num');
+                                const addItem = () => {
+                                    fetch('./?url=cart/add', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify({
+                                            merchandise_id: <?= $data['merchandise']['id']; ?>,
+                                            quantity: num.value
+                                        })
+                                    }).then(response => {
+                                        window.addValue(); 
+                                    });
+                                };
+                            </script> 
                         </div>
                     </div>
                 </div>

@@ -28,7 +28,7 @@ class PageController extends Controller{
             $merchandise_id = $item['merchandise_id'];
             
             if (isset($data[$merchandise_id])) {
-                $data[$merchandise_id] += $quantity;
+                $data[$merchandise_id]['quantity'] += $quantity;
             } else {
                 $merchandisesData = $this->Merchandises->getMerchandiseById($merchandise_id);
                 $image_path = $merchandisesData['image_path'];
@@ -75,11 +75,26 @@ class PageController extends Controller{
         }
 
         header('Content-Type: application/json');
+        ob_clean();
         echo json_encode($data);
         // $this->redirect('home');
     }
 
     public function addItem(){
-        
+        $postData = $this->retrievePostData();
+        $postData = json_decode(file_get_contents('php://input'), true);
+        error_log(print_r($postData, true));
+        $merchandise_id = $postData['merchandise_id'] ?? '';
+        $quantity = $postData['quantity'] ?? '';
+        $this->CartsModel = $this->model('CartsModel');
+        $this->CartsModel->addItem($merchandise_id, $quantity);
+        $response = [
+            'status' => 'success',
+            'message' => 'Item added to cart'
+        ];  
+        header('Content-Type: application/json');
+        ob_clean();
+        echo json_encode($response);
+
     }
 }
