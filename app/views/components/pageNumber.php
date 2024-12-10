@@ -32,16 +32,17 @@ function generatePageUrl($currentUrl, $page) {
 }
 
 // 動態生成分頁 HTML
+$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1; // 當前頁碼
+
 $paginationHTML = '';
 for ($i = 1; $i <= $totalPages; $i++) {
     $pageUrl = generatePageUrl($currentUrl, $i);
     $pageNumber = str_pad($i, 2, '0', STR_PAD_LEFT); // 格式化頁碼為兩位數
+    $activeClass = ($i === $currentPage) ? 'class="active"' : ''; // 當前頁添加 active 類
     $paginationHTML .= <<<HTML
-    <li><a href="$pageUrl">$pageNumber</a></li>
+    <li $activeClass><a href="$pageUrl">$pageNumber</a></li>
     HTML;
 }
-
-
 
 // 包裹生成的分頁 HTML
 $paginationHTML = <<<HTML
@@ -52,4 +53,5 @@ HTML;
 
 // 輸出分頁 HTML
 echo $paginationHTML;
+
 ?>

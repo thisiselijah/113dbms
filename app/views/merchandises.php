@@ -33,15 +33,26 @@
     
     // 類別生成函數
     function generateCategoryHTML($categories, $category_mapping) {
+        // 獲取當前的 category_id，從 URL 的 query 參數中讀取
+        $currentCategoryId = $_GET['category_id'] ?? null;
+    
         $content = '';
         foreach ($categories as $item) {
+            // 取得類別名稱，若無對應則使用原名稱
             $name = $category_mapping[$item['name']] ?? $item['name'];
+    
+            // 若當前類別為點選的類別，添加 active 類別
+            $isActive = ((string)$currentCategoryId === (string)$item['id']) ? 'class="category-item active"' : 'class="category-item"';
+    
+            // 生成 HTML
             $content .= <<<HTML
-            <li><a href="./?url=show/merchandises&category_id={$item['id']}">{$name} ({$item['item_count']})</a></li>
+            <li $isActive><a href="./?url=show/merchandises&category_id={$item['id']}">{$name} ({$item['item_count']})</a></li>
             HTML;
         }
         return $content;
-    }    
+    }
+    
+
     
     // 類別
     $category_mapping = [
@@ -92,10 +103,8 @@
                                 <div class="shop_widget_title categories_title">
                                     <h2>目錄</h2>
                                 </div>
-                                <div class="widget_categories">
-                                    <ul>
+                                <div class="widget_categories"> <!-- 動態生成類別 -->
                                         <?=$category_list?>
-                                    </ul>
                                 </div>
                             </div>
                            
@@ -113,7 +122,7 @@
                             </div>
                            
                             <div class="loding_bar">
-                                <ul class="d-flex justify-content-center">
+                                <ul class="d-flex justify-content-center ">
                                      <!---page number-->
                                      <?php require APP_ROOT . 'views/components/pageNumber.php'; ?>
                                 </ul>
@@ -143,6 +152,8 @@
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
-
+    <script src="assets/js/minicart.js"></script>
+        
+    
 </body>
 </html>
