@@ -68,5 +68,36 @@ class Merchandises
         $this->db->query($query);
         return $this->db->getAll();
     }
+
+    public function searchMerchandiseByName($keyword){
+        $query = "SELECT * FROM `merchandises` WHERE `name` LIKE :keyword";
+        $this->db->query($query);
+        $this->db->bind(':keyword', "%$keyword%");
+        return $this->db->getAll();
+    }
+
+    // public function getPartialMerchandiseCategoryCount($merchandises) {
+    //     $merchandiseIds = array_column($merchandises, 'id');
+    //     if (empty($merchandiseIds)) {
+    //         return [];
+    //     }
+    //     error_log(print_r($merchandiseIds, true));
+        
+    //     $query = "
+    //     SELECT 
+    //         c.id, 
+    //         c.name, 
+    //         COUNT(CASE WHEN m.id IS NOT NULL AND m.id IN (" . implode(',', $merchandiseIds) . ") THEN 1 ELSE NULL END) AS item_count
+    //     FROM 
+    //         `categories` c
+    //     LEFT JOIN 
+    //         `merchandises` m ON c.id = m.category_id
+    //     GROUP BY 
+    //         c.id
+    //     ";
+    //     $this->db->query($query);
+    //     return $this->db->getAll();
+        
+    // }
 }
 ?>

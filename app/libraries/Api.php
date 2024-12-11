@@ -8,6 +8,7 @@ class Api {
             'merchandises/merchandise' => ['ShopController','showSingleProduct'],
             'loginPage' => ['PageController','showLoginPage'],
             'login' => ['AuthController', 'login'],
+            'search' => ['ShopController','searchItem'],
             
         ],
         'hasLogin' => [
