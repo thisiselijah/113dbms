@@ -10,6 +10,8 @@ const showAlert = () => {
 }
 
 
+//************下方為註冊功能************
+
 //帳號創建成功
 const signUp = () => {
     Swal.fire({
@@ -20,15 +22,20 @@ const signUp = () => {
     })
 }
 
-//註冊帳號的第二頁
-document.getElementById('next-button').addEventListener('click', function () {
-    // 移動到第二部分
-    document.querySelector('.login-slider').style.transform = 'translateX(-50%)';
+// 按鈕和頁面切換控制
+const nextButton = document.getElementById('next-button');
+const backButton = document.getElementById('back-button');
+const loginSlider = document.querySelector('.login-slider');
+
+// 下一頁按鈕
+nextButton.addEventListener('click', function () {
+    loginSlider.style.transform = 'translateX(-50%)'; // 滑動到第二頁
+    backButton.style.visibility = 'visible'; // 顯示返回按鈕
 });
 
 // 返回按鈕
-document.getElementById('back-button').addEventListener('click', function () {
-    // 滑動回到第一頁
-    document.querySelector('.login-slider').style.transform = 'translateX(0)';
+backButton.addEventListener('click', function () {
+    loginSlider.style.transform = 'translateX(0)'; // 滑動回第一頁
+    backButton.style.visibility = 'hidden'; // 隱藏返回按鈕
 });
 
