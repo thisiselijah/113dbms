@@ -12,27 +12,26 @@
 - [x] 商品分類側邊欄
 - [x] 商品頁切換
 - [x] 評論及評分
-- [ ] 搜尋商品
+- [x] 搜尋商品
 - [ ] 送出訂單
 - [ ] 查看訂單
+- [ ] 註冊
 
 ### Intro
 ---
-
+資料庫系統期末專題，傢俱購物網站。
 
 ### How to start it?
 ---
-
 1. 啟動 apache and mysql server in XAMPP
 2. clone this repo to path: xampp/htdocs
 3. cd into repo dir path
-4. add an ```.env``` file in path: ```app/```
-5. 開啟 phpMyadmin 匯入 ```FERNITURE_DB.sql```
+4. create an *```.env```* file in path: *```app/```*
+5. 開啟 phpMyadmin 匯入 *```FERNITURE_DB.sql```*
 7. 在 Browser 輸入 http://127.0.0.1/113DBMS/public/?url=home
 
-### In the .env
+### In the *```.env```* file
 ---
-
 You need to type the following content:
 
 ```
