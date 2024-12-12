@@ -5617,7 +5617,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .widget_categories ul li {
   margin-bottom: 37px;
-  
 }
 .widget_categories ul li:last-child {
   margin-bottom: 0;
@@ -5640,12 +5639,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #9F9F9F;
 }
 .widget_categories ul li a:hover {
-  color: #AB6E35;
+  color: #000000;
 }
-
-
-
-
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .widget_categories ul li a {
     font-size: 16px;
@@ -6284,13 +6279,14 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 
 /*商品目錄 */
-.category-item {
-  color: #333; /* 默認顏色 */
+.category {
+  color: black;
+  text-decoration: none;
 }
 
-.category-item.active a {
-  color: #AB6E35; /* 被點選時的顏色 */
-  font-weight: bold; /* 可選，加粗以突出效果 */
+.category.active {
+  color: orange; /* 點擊後變成紅色 */
+  font-weight: bold; /* 可選，讓文字更明顯 */
 }
 /*商品目錄 end */
 
@@ -6311,16 +6307,15 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   transition: background-color 0.3s, color 0.3s;
 }
 
-
-
-.pagination li.active a {
-  color: #fff; /* 被點選頁的文字顏色 */
-  background-color: #ffc400; /* 被點選頁的背景顏色 */
-  font-weight: bold; /* 強調效果 */
-  border-color: #ffc400; /* 邊框與背景一致 */
+.pagination a.active {
+  background-color: #ffc400;
+  color: #fff;
+  border-color:#ffc400;
 }
 
-
+.pagination a:hover:not(.active) {
+  background-color: #f0f0f0;
+}
 /* 商品頁的頁數顏色顯示 end*/
 
 

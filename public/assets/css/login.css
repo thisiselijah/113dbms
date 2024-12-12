@@ -6,12 +6,17 @@ body, html {
     font-family: Arial, sans-serif;
     background-color: #f3f4f6;
     color: #333;
+
 }
+
+
+
+
 
 /* Header Styling */
 .header_section {
     background-color: #fbe8d5;
-    padding: 20px 0;
+    padding: 10px 0;
     color: rgb(0, 0, 0);
     
 }
@@ -40,7 +45,6 @@ body, html {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
 }
 .login-container h2 {
     margin-bottom: 20px;
@@ -81,4 +85,34 @@ button[type="submit"] {
 }
 button[type="submit"]:hover {
     background-color: #16a085;
+}
+
+/*註冊文字*/
+.remind {
+    display: inline-block;
+    margin-right: 5px; /* 加一點間距 */
+    margin-top: 12px;
+    text-align: left;
+    color: rgb(180, 179, 179);
+}
+
+.register {
+    display: inline-block;
+    margin-right: 5px; /* 加一點間距 */
+    margin-top: 12px;
+    text-align: left;
+    color: rgb(196, 80, 80);
+}
+
+.register a:hover {
+    color: rgb(196, 80, 80);
+}
+
+.text-md-left {
+    display: inline-block;
+}
+
+.text-md-left {
+    display: inline-block;
+    text-align: center;
 }

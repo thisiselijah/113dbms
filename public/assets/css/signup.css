@@ -1,0 +1,194 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    color: #333;
+}
+
+
+
+/* Header Styling */
+.header_section {
+    background-color: #fbe8d5;
+    padding: 10px 0;
+    color: rgb(0, 0, 0);
+    
+}
+.header_logo img {
+    max-width: 150px;
+}
+.main_menu ul {
+    list-style: none;
+    padding: 0;
+}
+.main_menu ul li a {
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.main_menu ul li a:hover, .main_menu ul li a.active {
+    color: #18bc9c;
+}
+
+/* Login Container */
+
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    overflow: hidden; /* 隱藏超出範圍的部分 */
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Slider content */
+.login-slider {
+    display: flex; /* 使用水平排列 */
+    width: 200%; /* 適應兩個區塊 */
+    transition: transform 0.5s ease; /* 平滑過渡 */
+}
+
+/* Each section */
+.login-step {
+    width: 50%; /* 每個區塊占一半 */
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/*Next button*/
+button {
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    background-color: #e48e3e;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #c7701f;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: left;
+}
+input[type="text"],
+input[type="password"] {
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+button[type="submit"] {
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    background-color: #18bc9c;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button[type="submit"]:hover {
+    background-color: #16a085;
+}
+
+/*註冊文字*/
+.remind {
+    display: inline-block;
+    margin-right: 5px; /* 加一點間距 */
+    margin-top: 12px;
+    text-align: left;
+    color: rgb(180, 179, 179);
+}
+
+.register {
+    display: inline-block;
+    margin-right: 5px; /* 加一點間距 */
+    margin-top: 12px;
+    text-align: left;
+    color: rgb(196, 80, 80);
+}
+
+.register a:hover {
+    color: rgb(196, 80, 80);
+}
+
+.text-md-left {
+    display: inline-block;
+}
+
+.text-md-left {
+    display: inline-block;
+    text-align: center;
+}
+
+
+/*返回按鈕*/
+/* 表單容器 */
+.form-container {
+    position: relative; /* 確保容器成為定位參考 */
+    padding: 20px;
+    border: 1px solid #ddd; /* 可選：容器邊框 */
+    width: 300px; /* 設定容器寬度 */
+}
+
+/* 按鈕基礎樣式 */
+.icon-button {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    position: absolute; /* 使用絕對定位 */
+    top: 2px; /* 距離容器頂部 10px */
+    right: 30px; /* 距離容器右側 10px */
+}
+
+/* 圖標樣式 */
+.icon-button i {
+    font-size: 16px;
+    color: #333;
+}
+
+/* 按鈕 hover 效果 */
+.icon-button:hover {
+    background-color: #ddd;
+    transform: scale(1.1);
+}
+
+/* 按鈕按下效果 */
+.icon-button:active {
+    transform: scale(0.95);
+}
