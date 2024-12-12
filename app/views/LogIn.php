@@ -30,7 +30,7 @@
 
 <body>
     <div class="login-container">
-        <h2>Login</h2>
+        <h2 class="text-md-center">Login</h2>
         <form id="loginForm" method="post">
             <label for="username">Username</label>
             <input
@@ -49,8 +49,14 @@
                 required />
 
             <button type="submit" >Login</button>
+
+            <div calss ="text-md-left">
+                <text class="remind">Don't have an account?</text>
+                <text class="register"><a href="SignUp.html">Sign up</a></text>     <!--轉到註冊-->
+            </div>
         </form>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/js/login.js"></script>
 </body>

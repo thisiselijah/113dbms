@@ -1,31 +1,41 @@
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // 防止表單提交
-
-    const formData = new FormData(this);
-
-    fetch('?url=login', {
-        method: 'POST',
-        body: formData
+//登入失敗
+const showAlert = () => {
+    Swal.fire({
+    icon: 'error',
+    text: '請重新輸入密碼',
+    title: '密碼錯誤',
+    timer: 2000,
+     timerProgressBar: true,
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Response data:', data);
-        if (data.status === 'error') {
-            Swal.fire({
-                icon: 'error',
-                text: data.message,
-                title: '密碼錯誤',
-                timer: 2000,
-                timerProgressBar: true,
-            });
-        } else{
-            redirect();
-        }
-        
+}
+
+
+//************下方為註冊功能************
+
+//帳號創建成功
+const signUp = () => {
+    Swal.fire({
+    icon: 'success',
+    title: '創建成功',
+    timer: 2000,
+     timerProgressBar: true,
     })
-    .catch(error => console.error('Error:', error));
+}
+
+// 按鈕和頁面切換控制
+const nextButton = document.getElementById('next-button');
+const backButton = document.getElementById('back-button');
+const loginSlider = document.querySelector('.login-slider');
+
+// 下一頁按鈕
+nextButton.addEventListener('click', function () {
+    loginSlider.style.transform = 'translateX(-50%)'; // 滑動到第二頁
+    backButton.style.visibility = 'visible'; // 顯示返回按鈕
 });
 
-const redirect = () => {
-    window.location.href = './?url=home';
-}
+// 返回按鈕
+backButton.addEventListener('click', function () {
+    loginSlider.style.transform = 'translateX(0)'; // 滑動回第一頁
+    backButton.style.visibility = 'hidden'; // 隱藏返回按鈕
+});
+
