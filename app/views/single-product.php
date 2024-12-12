@@ -96,7 +96,7 @@
 
                                 var num = document.getElementById('num');
                                 const addItem = () => {
-                                    <?php if (!isset($_SESSION['user'])) : ?>
+                                    if (!<?php echo isset($_SESSION['id']) ? 'true' : 'false' ?>) {
                                         Swal.fire({
                                             icon: 'error',
                                             text: '請先登入',
@@ -107,7 +107,7 @@
                                             window.location.href = './?url=loginPage';
                                         });
                                         return;
-                                    <?php endif; ?>
+                                    }
                                     fetch('./?url=cart/add', {
                                         method: 'POST',
                                         headers: {
