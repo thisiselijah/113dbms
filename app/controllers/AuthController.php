@@ -51,6 +51,33 @@ class AuthController extends Controller
         session_destroy();
         $this->redirect('./?url=home');
     }
-
-    // 登出後回到首頁
+    // Register function
+    public function register()
+    {
+        header('Content-Type: application/json');
+        ob_clean();
+        $postData = $this->retrievePostData();
+        error_log("Post data: " . print_r($postData, true));
+        $account = $postData['username'] ?? '';
+        $password = $postData['password'] ?? '';
+        $name = $postData['name'] ?? '';
+        $email = $postData['email'] ?? '';
+        $phone_number = $postData['phone_number'] ?? '';
+        // 嘗試新增使用者，若失敗則回傳錯誤訊息格式為JSON
+        try {
+            $this->UsersModel->addUser($account, $password, $name, $email, $phone_number);
+            $response = [
+                'status' => 'success',
+                'message' => 'Register successful'
+            ];
+            echo json_encode($response);
+        } catch (Exception $e) {
+            $response = [
+                'status' => 'error',
+                'message' => 'Register failed'
+            ];
+            echo json_encode($response);
+        }
+        
+    }   
 }

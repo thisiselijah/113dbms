@@ -8,7 +8,7 @@
             <!-- First Section: Username and Password -->
             <div class="login-step">
                 <h2 class="text-md-center">Sign Up</h2>
-                <form id="step1">
+                <form id="registerForm1">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" placeholder="Enter your username" required>
                     
@@ -26,15 +26,15 @@
     
             <!-- Second Section: Fullname, Email, Phone -->
             <div class="login-step">
-                <form id="step2">        
+                <form id="registerForm2">        
                     <label for="fullname">Fullname</label>
-                    <input type="text" id="fullname" name="fullname" placeholder="Enter your fullname" required>
+                    <input type="text" id="fullname" name="name" placeholder="Enter your fullname" required>
     
                     <label for="email">Email</label>
                     <input type="text" id="email" name="email" placeholder="Enter your Email" required>
     
                     <label for="phone">Phone</label>
-                    <input type="text" id="phone" name="phone" placeholder="Enter your phone" required>
+                    <input type="text" id="phone" name="phone_number" placeholder="Enter your phone" required>
                     
                     <button type="submit" onclick="signUp()">Sign Up</button>
 
