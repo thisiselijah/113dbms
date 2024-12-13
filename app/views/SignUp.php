@@ -47,10 +47,8 @@
         </div>
     </div>
     
-
-
     <!-- Main JS -->
-    <script src="assets/js/login.js"></script>
+    <script src="assets/js/register.js"></script>
 
 </body>
 </html>
