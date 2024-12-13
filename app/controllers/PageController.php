@@ -17,6 +17,10 @@ class PageController extends Controller{
         $this->view('LogIn');
     }
 
+    public function showRegisterPage(){
+        $this->view('SignUp');
+    }
+
     public function renderCart(){
         $this->CartsModel = $this->model('CartsModel');
         $this->Merchandises = $this->model('Merchandises');

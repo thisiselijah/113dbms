@@ -4,13 +4,13 @@
                 <div class="col-12">
                     <div class="main_header d-flex justify-content-between align-items-center">
                         <div class="header_logo">
-                            <a class="sticky_none" href="main.html"><img src="assets/img/logo/logo.png" alt="Logo"></a>
+                            <a class="sticky_none" href="?url=home"><img src="assets/img/logo/logo.png" alt="Logo"></a>
                         </div>
                         <div class="main_menu d-none d-lg-block">
                             <nav>
                                 <ul class="d-flex">
-                                    <li><a href="main.html">Home</a></li>
-                                    <li><a href="shop1.html">Shop</a></li>
+                                    <li><a href="?url=home">Home</a></li>
+                                    <li><a href="?url=show/merchandises">Shop</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -22,13 +22,7 @@
                                         alt=""></a>
                                         <ul class="dropdown_account_link">
                                             <li>
-                                                <a href="orderList.html">Order</a>
-                                            </li>
-                                            <li>
-                                                <a href="LogIn.html">Log in</a>
-                                            </li>
-                                            <li>
-                                                <a href=" ">Log out</a>
+                                                <a href="?url=loginPage">Log in</a>
                                             </li>
                                         </ul>
                                     </li>

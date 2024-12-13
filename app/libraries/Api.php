@@ -9,7 +9,8 @@ class Api {
             'loginPage' => ['PageController','showLoginPage'],
             'login' => ['AuthController', 'login'],
             'search' => ['ShopController','searchItem'],
-            
+            'register' => ['AuthController', 'register'],  
+            'registerPage' => ['PageController','showRegisterPage']
         ],
         'hasLogin' => [
             'logout' => ['AuthController', 'logout'],

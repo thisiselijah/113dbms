@@ -52,7 +52,7 @@
 
             <div calss ="text-md-left">
                 <text class="remind">Don't have an account?</text>
-                <text class="register"><a href="SignUp.html">Sign up</a></text>     <!--轉到註冊-->
+                <text class="register"><a href="?url=registerPage">Sign up</a></text>     <!--轉到註冊-->
             </div>
         </form>
     </div>

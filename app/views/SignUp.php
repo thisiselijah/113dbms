@@ -19,7 +19,7 @@
 
                     <div calss ="text-md-left">
                         <text class="remind">Already have an account?</text>
-                        <text class="register"><a href="LogIn.html">Login</a></text>
+                        <text class="register"><a href="?url=loginPage">Login</a></text>
                     </div>
                 </form>
             </div>
