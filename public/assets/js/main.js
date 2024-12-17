@@ -229,17 +229,17 @@
  
 
     //搜尋鍵
-document.getElementById('searchButton').addEventListener('click', function (event) {
-    event.preventDefault(); // 防止預設的跳轉行為
-    const searchBar = document.getElementById('searchBarContainer');
-    if (searchBar.style.display === 'none') {
-      searchBar.style.display = 'block'; // 顯示搜尋列
-    } else {
-      searchBar.style.display = 'none'; // 隱藏搜尋列
-    }
+// document.getElementById('searchButton').addEventListener('click', function (event) {
+//     event.preventDefault(); // 防止預設的跳轉行為
+//     const searchBar = document.getElementById('searchBarContainer');
+//     if (searchBar.style.display === 'none') {
+//       searchBar.style.display = 'block'; // 顯示搜尋列
+//     } else {
+//       searchBar.style.display = 'none'; // 隱藏搜尋列
+//     }
 
     
-  });
+//   });
   
 
     // Search box
