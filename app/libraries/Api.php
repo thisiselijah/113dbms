@@ -9,14 +9,16 @@ class Api {
             'loginPage' => ['PageController','showLoginPage'],
             'login' => ['AuthController', 'login'],
             'search' => ['ShopController','searchItem'],
-            
+            'register' => ['AuthController', 'register'],  
+            'registerPage' => ['PageController','showRegisterPage']
         ],
         'hasLogin' => [
             'logout' => ['AuthController', 'logout'],
             'home' => ['PageController','showHome'],
             'show/merchandises' => ['ShopController','showMerchandises'],
             'cart/fetch' => ['PageController','getCart'],
-            'cart/add' => ['PageController','addItem']
+            'cart/add' => ['PageController','addItem'],
+            'cart/delete' => ['PageController','deleteItem'],
         ]
     ];
 

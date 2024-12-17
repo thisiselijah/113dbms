@@ -50,15 +50,17 @@
 
             <button type="submit" >Login</button>
 
-            <div calss ="text-md-left">
-                <text class="remind">Don't have an account?</text>
-                <text class="register"><a href="SignUp.html">Sign up</a></text>     <!--轉到註冊-->
-            </div>
+            
         </form>
+        <div calss ="text-md-left">
+                <text class="remind">Don't have an account?</text>
+                <text class="register"><a href="?url=registerPage">Sign up</a></text>     <!--轉到註冊-->
+            </div>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/js/login.js"></script>
+    
 </body>
 
 </html>
