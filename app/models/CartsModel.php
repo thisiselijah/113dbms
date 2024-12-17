@@ -40,5 +40,15 @@ class CartsModel {
         }
         return $total;
     }
+
+    public function deleteItem($merchandise_id){
+        $user_id = $_SESSION['id'];
+        $query = "DELETE FROM carts WHERE user_id = :user_id AND merchandise_id = :merchandise_id";
+        $this->db->query($query);
+        $this->db->bind(':user_id', $user_id);
+        $this->db->bind(':merchandise_id', $merchandise_id);
+        $this->db->execute();
+    }
+    
 }    
 ?>

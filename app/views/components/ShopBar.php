@@ -57,6 +57,24 @@
                                     <!--在這裡新增了移除商品-->
 <script type="text/babel">
     const Card = (props) => {
+        const removeItem = () => {
+            fetch("?url=cart/delete", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                merchandise_id: props.id,
+            }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                window.addValue(); // Trigger re-fetching of cart items
+            })
+            .catch((error) => console.error("Error removing item from cart:", error));
+
+        };
         return (
             <div className="cart_item">
                 <div className="cart_img">
@@ -71,8 +89,8 @@
                     </p>
                 </div>
                 <div className="cart_remove">    
-                    <a href="#">
-                        <img src="assets/img/icon/delete.png"  alt="" />
+                    <a href="#" onClick={removeItem}>
+                        <img src="assets/img/icon/delete.png" alt=""/>
                     </a>
                 </div>
             </div>
