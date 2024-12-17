@@ -1,8 +1,10 @@
 <?php require APP_ROOT . 'views/components/SignUPBar.php'; ?>
 <?php require APP_ROOT . 'views/include/SignUpHeader.php'; ?>
 
+
+
 <body>
-    <!-- Login Form Section -->
+    <!-- SignUp Form Section -->
     <div class="login-container">
         <div class="login-slider">
             <!-- First Section: Username and Password -->
@@ -28,7 +30,7 @@
             <div class="login-step">
                 <form id="registerForm2">        
                     <label for="fullname">Fullname</label>
-                    <input type="text" id="fullname" name="name" placeholder="Enter your fullname" required>
+                    <input type="text" id="fullname" name="fullname" placeholder="Enter your fullname" required>
     
                     <label for="email">Email</label>
                     <input type="text" id="email" name="email" placeholder="Enter your Email" required>
@@ -36,7 +38,9 @@
                     <label for="phone">Phone</label>
                     <input type="text" id="phone" name="phone_number" placeholder="Enter your phone" required>
                     
-                    <button type="submit" onclick="signUp()">Sign Up</button>
+                    <button type="submit" >Sign Up</button>
+
+                    
 
                    <!-- 返回按鈕 -->
                     <button type="button" id="back-button" class="icon-button">

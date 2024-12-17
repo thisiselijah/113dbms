@@ -10,14 +10,18 @@
                             <nav>
                                 <ul class="d-flex">
                                     <li><a href="?url=home">Home</a></li>
+                                    <li></li>
+                                    <li></li>
                                     <li><a href="?url=show/merchandises">Shop</a></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
                                 </ul>
                             </nav>
                         </div>
                         <div class="header__ridebar d-flex align-items-center">
                             <div class="header_account">
                                 <ul class="d-flex">
-                                    <li class="shopping_cart"><a href="#"><img src="assets/img/icon/cart.png" alt="Cart"></a></li>
                                     <li class="account_link_menu"><a href="#"><img src="assets/img/icon/person.png"
                                         alt=""></a>
                                         <ul class="dropdown_account_link">

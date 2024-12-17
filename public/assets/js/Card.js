@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+
+//購物車項目欄位
+
 const Card = (props) => {
   return (
     <div>
@@ -14,7 +17,7 @@ const Card = (props) => {
           {props.quantity} x <span> $ {props.price} </span>
         </p>
       </div>
-      <div className="cart_remove">
+      <div className="cart_remove">   
         <a href="#">
           <i class="icon-close icons"></i>
         </a>
