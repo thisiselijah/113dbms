@@ -53,6 +53,8 @@
 </header>
 
 <div class="mini_cart" id="cart"></div>
+
+                                    <!--在這裡新增了移除商品-->
 <script type="text/babel">
     const Card = (props) => {
         return (
@@ -68,9 +70,9 @@
                         {props.quantity} x <span> $ {props.price} </span>
                     </p>
                 </div>
-                <div className="cart_remove">
+                <div className="cart_remove">    
                     <a href="#">
-                        <i className="icon-close icons"></i>
+                        <img src="assets/img/icon/delete.png"  alt="" />
                     </a>
                 </div>
             </div>

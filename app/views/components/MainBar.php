@@ -59,7 +59,9 @@
             </div>
         </div>
         <?php
-            // print_r($data);
+            // print_r($data);  
+
+            //在這裡新增了移除商品
             $total = 0;
             foreach($data as $dataItem){
                 $total += $dataItem['quantity']*$dataItem['price'];
@@ -72,8 +74,11 @@
                         <a href="#">{$dataItem['name']}</a>
                         <p>{$dataItem['quantity']} x <span> $ {$dataItem['price']} </span></p>
                     </div>
-                    <div class="cart_remove">
-                        <a href="#"><i class="icon-close icons"></i></a>
+
+                    <div class="cart_remove">    
+                        <a href="#">
+                            <img src="assets/img/icon/delete.png"  alt="" />
+                        </a>
                     </div>
                 </div>
                 HTML;
