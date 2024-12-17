@@ -51,6 +51,9 @@ class AuthController extends Controller
         session_destroy();
         $this->redirect('./?url=home');
     }
+
+    
+
     // Register function
     public function register()
     {
@@ -60,24 +63,91 @@ class AuthController extends Controller
         error_log("Post data: " . print_r($postData, true));
         $account = $postData['username'] ?? '';
         $password = $postData['password'] ?? '';
-        $name = $postData['name'] ?? '';
+        $name = $postData['fullname'] ?? '';
         $email = $postData['email'] ?? '';
         $phone_number = $postData['phone_number'] ?? '';
-        // 嘗試新增使用者，若失敗則回傳錯誤訊息格式為JSON
-        try {
-            $this->UsersModel->addUser($account, $password, $name, $email, $phone_number);
-            $response = [
-                'status' => 'success',
-                'message' => 'Register successful'
-            ];
-            echo json_encode($response);
-        } catch (Exception $e) {
+
+       
+        if (empty($account) || strlen($account) > 50) {
             $response = [
                 'status' => 'error',
-                'message' => 'Register failed'
+                'message' => '用戶名不能為空且不能超過 50 字'
+            ];
+            echo json_encode($response);
+            return;
+        }
+        
+        if (strlen($password) < 6) {
+            $response = [
+                'status' => 'error',
+                'message' => '密碼需至少 6 個字元'
+            ];
+            echo json_encode($response);
+            return;
+        }
+        
+        if (empty($name) || strlen($name) > 50) {
+            $response = [
+                'status' => 'error',
+                'message' => '名稱不能為空且不能超過 50 字'
+            ];
+            echo json_encode($response);
+            return;
+        }
+        
+        
+
+        // 驗證 Email 格式
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $response = [
+                'status' => 'error',
+                'message' => 'Email 格式不正確'
+            ];
+            echo json_encode($response);
+            return;
+        }
+
+        // 驗證電話號碼格式（僅接受數字，且長度為10）
+        if (!preg_match('/^\d{10}$/', $phone_number)) {
+            $response = [
+                'status' => 'error',
+                'message' => '電話號碼格式不正確'
+            ];
+            echo json_encode($response);
+            return;
+        }
+
+        /*
+        $is_existed =  $this->UsersModel->isAccountExists($account);
+        error_log("Test: " . print_r($is_existed, true));
+        */
+        
+
+        // 檢查帳號是否已存在
+        try {
+            if($this->UsersModel->isAccountExists($account)){
+                // 嘗試新增使用者
+                $response = [
+                    'status' => 'error',
+                    'message' => '帳號已存在'
+                ];
+            }else{
+                $this->UsersModel->addUser($account, $password, $name, $email, $phone_number);
+                $response = [
+                    'status' => 'success',
+                    'message' => '註冊成功'
+                ];
+            }
+            
+            echo json_encode($response);
+        } catch (Exception $e) {
+            error_log("Error: " . $e->getMessage());
+            $response = [
+                'status' => 'error',
+                'message' => '註冊失敗，系統發生異常'
             ];
             echo json_encode($response);
         }
-        
-    }   
+    }
+  
 }
