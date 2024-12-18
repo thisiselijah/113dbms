@@ -12,10 +12,11 @@ echo <<<HTML
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
 
-     <!-- Main Style CSS -->
-     <link rel="stylesheet" href="assets/css/checkout.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="assets/css/checkout.css">
 
-    <!--modernizr min js here-->
+    <!-- Modernizr JS -->
     <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 HTML;

@@ -4,6 +4,10 @@ class ShopController extends Controller{
 
     private mixed $merchandiseModel;
     private mixed $merchandiseReviews;
+    private mixed $cartsModel;
+    private mixed $ordersModel;
+    private mixed $orderItemsModel;
+
     public function __construct() {
         $this->merchandiseModel = $this->model('Merchandises'); 
         
@@ -56,6 +60,40 @@ class ShopController extends Controller{
         
     }
 
+    public function purchaseMerchandise(){
+        $this->cartsModel = $this->model('CartsModel');
+        $carts = $this->cartsModel->getUserCart();
+        foreach($carts as $cart){
+            $merchandise = $this->merchandiseModel->getMerchandiseNamePricePathById($cart['merchandise_id']);
+            $merchandises[] = [
+                'id' => $cart['id'],
+                'name' => $merchandise['name'],
+                'price' => $merchandise['price'],
+                'image_path' => $merchandise['image_path'],
+                'quantity' => $cart['quantity'],
+                
+            ];  
+        }
+        $data =[    
+            'merchandises' => $merchandises
+        ];
+        $this->view('checkOut',$merchandises);
+    }
+
+    public function storeOrders(){
+        $this->ordersModel = $this->model('Orders');
+        $this->orderItemsModel = $this->model('Order_items');
+
+        $postData = $this->retrievePostData();
+        $status = 'confirmed'; 
+        $items = $postData['items'];
+        $this->ordersModel->insertOrder($postData['user_id'],$status,$postData['total_price'],$postData['address'],$postData['payment']);
+        $order_id = $this->ordersModel->returnOrderId();
+        foreach ($items as $item){
+            $this->orderItemsModel->insertOrderItem($order_id['next_id'],$item['id'],$item['quantity']);
+        }
+        $this->redirect(".\?url=user/orders");
+    }
     
 
 }
