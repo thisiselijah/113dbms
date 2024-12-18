@@ -21,8 +21,8 @@ body, html {
 /* Header Styling */
 .header_section {
     background-color: #fbe8d5;
-    padding: 20px 0;
-    color: white;
+    padding: 10px 0;
+    color: rgb(0, 0, 0);    /*這裡改成黑色字才會顯示*/
 }
 .header_logo img {
     max-width: 150px;
@@ -141,14 +141,14 @@ button[type="submit"]:hover {
 .num {
     display: inline-block;
     width:30px;
-    -webkit-user-select: none;  /* 禁止本文選中 */
+    
 }
 
 .minus{
     display: inline-block;
     width: 25px;
     height: 25px;
-    -webkit-user-select: none;
+    
 }
 
 
@@ -156,7 +156,7 @@ button[type="submit"]:hover {
     display: inline-block;
     width: 25px;
     height: 25px;
-    -webkit-user-select: none;
+    
 }
 
 .minus:hover{
@@ -181,4 +181,9 @@ button[type="submit"]:hover {
 .product-image{
     width: 146px;
     height: 132px;
+}
+
+/*指標移到商品時顏色*/
+.table-cart-link:hover{
+    color: #AB6E35;
 }

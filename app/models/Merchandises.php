@@ -28,6 +28,13 @@ class Merchandises
         return $this->db->getSingle();
     }
 
+    public function getMerchandiseNamePricePathById($id){
+        $query = "SELECT `name`,`price`,`image_path` FROM `merchandises` WHERE `id` = :id";
+        $this->db->query($query);
+        $this->db->bind(':id', $id);
+        return $this->db->getSingle();
+    }
+
     public function getMerchandisesByCategoryId($category_id, $page) {
         $itemsPerPage = 9; // 每頁顯示商品數量
     
