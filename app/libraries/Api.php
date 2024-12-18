@@ -12,10 +12,11 @@ class Api {
         ],
         'hasLogin' => [
             'logout' => ['AuthController', 'logout'],
-            'home' => ['PageController','showHome'],
-            'show/merchandises' => ['ShopController','showMerchandises'],
             'cart/fetch' => ['PageController','getCart'],
-            'cart/add' => ['PageController','addItem']
+            'cart/add' => ['PageController','addItem'],
+            'purchase/merchandises' => ['ShopController','purchaseMerchandise'],
+            'submit/order' => ['ShopController','storeOrders'],
+            'user/orders' => ['OrderController','showOrders'],
         ]
     ];
 
