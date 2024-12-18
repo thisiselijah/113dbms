@@ -36,6 +36,29 @@ class ShopController extends Controller{
         ];
         $this->view('merchandises', $data);
     }
+    
+
+    public function searchItem(){
+        $postData = $this->retrievePostData();
+        if (!isset($postData['item']) || empty($postData['item'])) {
+            $this->redirect('?url=show/merchandises');
+        }
+        $merchandises = $this->merchandiseModel->searchMerchandiseByName($postData['item']);
+        if (empty($merchandises)) {
+            $this->view('merchandises', [
+                'categories' => $this->merchandiseModel->getAllMerchandiseCategoryCount(),
+                'merchandises' => $merchandises,
+                'merchandisesCount' => count($merchandises),
+            ]);
+        }
+        $data = [
+            'categories' => $this->merchandiseModel->getAllMerchandiseCategoryCount(),
+            'merchandises' => $merchandises,
+            'merchandisesCount' => count($merchandises),
+        ];
+        $this->view('merchandises', $data);
+        
+    }
 
     public function purchaseMerchandise(){
         $this->cartsModel = $this->model('CartsModel');

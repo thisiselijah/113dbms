@@ -93,8 +93,21 @@
                             </div>
                             <button class="btn btn-link" type="submit" onclick="addItem()">add to cart</button> 
                             <script>
+
                                 var num = document.getElementById('num');
                                 const addItem = () => {
+                                    if (!<?php echo isset($_SESSION['id']) ? 'true' : 'false' ?>) {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            text: '請先登入',
+                                            title: '未登入',
+                                            timer: 2000,
+                                            timerProgressBar: true,
+                                        }).then(() => {
+                                            window.location.href = './?url=loginPage';
+                                        });
+                                        return;
+                                    }
                                     fetch('./?url=cart/add', {
                                         method: 'POST',
                                         headers: {

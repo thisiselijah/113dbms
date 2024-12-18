@@ -17,6 +17,10 @@ class PageController extends Controller{
         $this->view('LogIn');
     }
 
+    public function showRegisterPage(){
+        $this->view('SignUp');
+    }
+
     public function renderCart(){
         $this->CartsModel = $this->model('CartsModel');
         $this->Merchandises = $this->model('Merchandises');
@@ -117,5 +121,20 @@ class PageController extends Controller{
             return;
         }
 
+    }
+    public function deleteItem(){
+        $postData = json_decode(file_get_contents('php://input'), true);
+        error_log(print_r($postData, true));
+        $merchandise_id = $postData['merchandise_id'] ?? '';
+        $this->CartsModel = $this->model('CartsModel');
+        $this->CartsModel->deleteItem($merchandise_id);
+        $response = [
+            'status' => 'success',
+            'message' => 'Item deleted from cart'
+        ];  
+        header('Content-Type: application/json');
+        ob_clean();
+        echo json_encode($response);
+        return;
     }
 }

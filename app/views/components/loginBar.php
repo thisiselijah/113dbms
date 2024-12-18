@@ -10,7 +10,12 @@
                             <nav>
                                 <ul class="d-flex">
                                     <li><a href="?url=home">Home</a></li>
+                                    <li></li>
+                                    <li></li>
                                     <li><a href="?url=show/merchandises">Shop</a></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
                                 </ul>
                             </nav>
                         </div>

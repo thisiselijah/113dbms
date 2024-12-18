@@ -8,7 +8,9 @@ class Api {
             'merchandises/merchandise' => ['ShopController','showSingleProduct'],
             'loginPage' => ['PageController','showLoginPage'],
             'login' => ['AuthController', 'login'],
-            
+            'search' => ['ShopController','searchItem'],
+            'register' => ['AuthController', 'register'],  
+            'registerPage' => ['PageController','showRegisterPage']
         ],
         'hasLogin' => [
             'logout' => ['AuthController', 'logout'],
@@ -17,6 +19,7 @@ class Api {
             'purchase/merchandises' => ['ShopController','purchaseMerchandise'],
             'submit/order' => ['ShopController','storeOrders'],
             'user/orders' => ['OrderController','showOrders'],
+            'cart/delete' => ['PageController','deleteItem'],
         ]
     ];
 
