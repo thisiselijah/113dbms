@@ -28,4 +28,14 @@ class MerchandiseReviews{
         return $this->db->getAll();
     }
     
+    public function insertReviews($user_id,$merchandise_id,$comment,$rank){
+        $query = "INSERT INTO `merchandise_reviews` (`user_id`, `merchandise_id`, `commit`, `rank`) 
+        VALUES (:user_id, :merchandise_id, :commit, :rank)";
+        $this->db->query($query);
+        $this->db->bind(':user_id', $user_id);
+        $this->db->bind(':merchandise_id', $merchandise_id);
+        $this->db->bind(':commit', $comment);
+        $this->db->bind(':rank', $rank);
+        return $this->db->execute();
+    }
 }
