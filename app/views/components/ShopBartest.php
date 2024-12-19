@@ -140,7 +140,7 @@
                 <Sum total={totalSum} />
                     <div class="mini_cart_footer">
                         <div class="cart_button">
-                            <a href="#"><i class="fa fa-sign-in"></i> 結帳</a>
+                            <a href="?url=purchase/merchandises"><i class="fa fa-sign-in"></i> 結帳</a>
                         </div>
                     </div>
             </div>

@@ -30,7 +30,7 @@
                                             alt=""></a>
                                     <ul class="dropdown_account_link">
                                         <li>
-                                            <a href="orderList.html">Order</a>
+                                            <a href="?url=user/orders">Order</a>
                                         </li>
                                         <?php
                                         if (isset($_SESSION['id'])) {
@@ -185,7 +185,7 @@
                 <Sum total={totalSum} />
                     <div class="mini_cart_footer">
                         <div class="cart_button">
-                            <a href="#"><i class="fa fa-sign-in"></i> 結帳</a>
+                            <a href="?url=purchase/merchandises"><i class="fa fa-sign-in"></i> 結帳</a>
                         </div>
                     </div>
             </div>
