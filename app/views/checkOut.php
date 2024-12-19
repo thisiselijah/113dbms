@@ -5,7 +5,6 @@ $userId = $_SESSION['id'] ?? null; // 假設SESSION中有登入使用者的ID
 $cartItemsHTML = '';
 $hiddenInputsHTML = ''; // 用於表單的隱藏欄位
 $totalAmount = 0;
-
 if (isset($data) && is_array($data)) {
     foreach ($data as $item) {
         $itemTotal = $item['price'] * $item['quantity'];
