@@ -66,7 +66,7 @@ class ShopController extends Controller{
         foreach($carts as $cart){
             $merchandise = $this->merchandiseModel->getMerchandiseNamePricePathById($cart['merchandise_id']);
             $merchandises[] = [
-                'id' => $cart['id'],
+                'id' => $cart['merchandise_id'],
                 'name' => $merchandise['name'],
                 'price' => $merchandise['price'],
                 'image_path' => $merchandise['image_path'],
