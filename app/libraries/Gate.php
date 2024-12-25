@@ -29,4 +29,9 @@ class Gate
             && isset($_SESSION['identity']) && ($_SESSION['identity'] == 'admin');
     }
     
+    public function user(): bool
+    {
+        return isset($_SESSION['id']) && !empty($_SESSION['id'])
+            && isset($_SESSION['identity']) && ($_SESSION['identity'] == 'user');
+    }  
 }
