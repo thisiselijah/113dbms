@@ -28,10 +28,8 @@ if (isset($data['orders']) && is_array($data['orders'])) {
                 $itemPrice = htmlspecialchars(number_format($item['price'], 2), ENT_QUOTES, 'UTF-8');
                 $quantity = htmlspecialchars($item['quantity'], ENT_QUOTES, 'UTF-8');
                 $imagePath = htmlspecialchars($item['image_path'], ENT_QUOTES, 'UTF-8');
-                
-                // 判斷評論按鈕是否顯示為「已完成評論」
                 if (isset($item['review_status']) && $item['review_status'] == 1) {
-                    $buttonText = '已完成';
+                    $buttonText = '已完成評論';
                     $buttonDisabled = 'disabled';
                 } else {
                     $buttonText = '評論商品';
