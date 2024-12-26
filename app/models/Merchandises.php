@@ -101,6 +101,31 @@ class Merchandises
         return $this->db->execute();
     }
 
+    public function updateMerchandise($data)
+    {
+        $query = "UPDATE `merchandises` 
+                SET 
+                    `name` = :name, 
+                    `description` = :description, 
+                    `price` = :price, 
+                    `image_path` = :image_path,
+                    `stock_quantity` = :stock, 
+                    `category_id` = :category, 
+                    `updated_at` = NOW() 
+                WHERE `id` = :id";
+
+        $this->db->query($query);
+        $this->db->bind(':id', $data['id']);
+        $this->db->bind(':name', $data['name']);
+        $this->db->bind(':description', $data['description']);
+        $this->db->bind(':price', $data['price']);
+        $this->db->bind(':image_path', $data['image_path']);
+        $this->db->bind(':stock', $data['stock']);
+        $this->db->bind(':category', $data['category']);
+        return $this->db->execute();
+    }
+
+
     // public function getPartialMerchandiseCategoryCount($merchandises) {
     //     $merchandiseIds = array_column($merchandises, 'id');
     //     if (empty($merchandiseIds)) {

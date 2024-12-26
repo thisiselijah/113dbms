@@ -27,6 +27,8 @@ class Api {
         'admin' => [
             'admin/show/new/merchandise'=>['ShopController','showNewMerchandise'],
             'admin/new/merchandise'=>['ShopController','newMerchandise'],
+            'admin/show/modify/merchandise'=>['ShopController','showModifyMerchandise'],
+            'admin/modify/merchandise'=>['ShopController','modifyMerchandise'],
         ]
     ];
 
