@@ -7,10 +7,11 @@ class ShopController extends Controller{
     private mixed $cartsModel;
     private mixed $ordersModel;
     private mixed $orderItemsModel;
+    private mixed $categoryModel;
 
     public function __construct() {
         $this->merchandiseModel = $this->model('Merchandises'); 
-        
+        $this->categoryModel = $this->model('categories');
     }
 
     public function showSingleProduct(){
@@ -95,5 +96,24 @@ class ShopController extends Controller{
         $this->redirect(".\?url=user/orders");
     }
     
+    public function showNewMerchandise(){
+        $categories = $this->categoryModel->getCategory();
+        $this->view("admin-new-merchandise",$categories);
+    }
+
+    public function newMerchandise(){
+        $postData = $this->retrievePostData();
+        // 圖片上傳處理
+        $uploadDir = 'assets/img/product/';
+        $category = $this->categoryModel->getNameIdById($postData['category']);
+        $uploadDir .= $category ['name']."/";
+        $uploadFile = $uploadDir . basename($_FILES['image']['name']);
+        $imagePath = '';
+        $imagePath = move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile) ? $uploadFile : die("圖片上傳失敗！");
+        $this->merchandiseModel->newMerchandise($postData['category'],$postData['name'],$postData['description'],$postData['price'],$postData['stock'],$imagePath);
+        $this->redirect(".\?url=show/merchandises");
+
+    }
+
 
 }

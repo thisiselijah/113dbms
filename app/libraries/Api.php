@@ -21,15 +21,13 @@ class Api {
             'user/orders' => ['OrderController','showOrders'],
             'cart/delete' => ['PageController','deleteItem'],
             'user/submit/reviews' => ['OrderController','storeReviews'],
+            
         ],
 
         'admin' => [
-            'admin/orders'=>['OrderController','showAdminOrders'],
-        ],
-
-        'user' => [
-            
-        ],
+            'admin/show/new/merchandise'=>['ShopController','showNewMerchandise'],
+            'admin/new/merchandise'=>['ShopController','newMerchandise'],
+        ]
     ];
 
     /**

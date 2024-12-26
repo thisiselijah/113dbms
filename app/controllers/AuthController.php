@@ -20,12 +20,13 @@ class AuthController extends Controller
         error_log("Session data: " . print_r($postData, true));
 
         $result = $this->UsersModel->getUsersByUsername($account, $password);
-
+       
 
         if ($result) {
             // session_start();
             $id = $result['id'];
             $_SESSION['id'] = $id;
+            $_SESSION['identity'] = $result['identity'];
             $response = [
                 'status' => 'success',
                 'message' => 'Login successful'
