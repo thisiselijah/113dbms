@@ -83,6 +83,24 @@ class Merchandises
         return $this->db->getAll();
     }
 
+    public function newMerchandise($category_id, $name, $description, $price, $stock_quantity, $image_path) {
+        $query = "
+            INSERT INTO `merchandises` 
+            (`category_id`, `name`, `description`, `price`, `stock_quantity`, `image_path`, `created_at`, `updated_at`) 
+            VALUES 
+            (:category_id, :name, :description, :price, :stock_quantity, :image_path, NOW(), NOW())
+        ";
+        $this->db->query($query);
+        $this->db->bind(':category_id', $category_id);
+        $this->db->bind(':name', $name);
+        $this->db->bind(':description', $description);
+        $this->db->bind(':price', $price);
+        $this->db->bind(':stock_quantity', $stock_quantity);
+        $this->db->bind(':image_path', $image_path);
+    
+        return $this->db->execute();
+    }
+
     // public function getPartialMerchandiseCategoryCount($merchandises) {
     //     $merchandiseIds = array_column($merchandises, 'id');
     //     if (empty($merchandiseIds)) {
