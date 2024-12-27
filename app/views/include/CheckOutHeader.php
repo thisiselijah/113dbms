@@ -11,6 +11,7 @@ echo <<<HTML
     <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+    
 
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="assets/css/checkout.css">

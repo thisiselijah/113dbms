@@ -4,10 +4,11 @@ date_default_timezone_set('Asia/Taipei');
 
 // 定義狀態對照表
 $statusMap = [
+    'processing' => '處理中',
     'pending'    => '配送中',
     'completed'  => '已完成',
     'canceled'   => '已取消',
-    'confirmed'  => '確認中',
+    'confirmed'  => '已確認',
 ];
 
 // 動態生成訂單列表

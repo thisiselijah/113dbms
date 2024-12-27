@@ -89,7 +89,7 @@ class ShopController extends Controller{
         $this->orderItemsModel = $this->model('Order_items');
 
         $postData = $this->retrievePostData();
-        $status = 'confirmed'; 
+        $status = 'processing'; 
         $items = $postData['items'];
         $this->ordersModel->insertOrder($postData['user_id'],$status,$postData['total_price'],$postData['address'],$postData['payment']);
         $order_id = $this->ordersModel->returnOrderId();

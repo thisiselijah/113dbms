@@ -23,12 +23,13 @@ class Api {
             'user/submit/reviews' => ['OrderController','storeReviews'],
             
         ],
-
         'admin' => [
             'admin/show/new/merchandise'=>['ShopController','showNewMerchandise'],
             'admin/new/merchandise'=>['ShopController','newMerchandise'],
             'admin/show/modify/merchandise'=>['ShopController','showModifyMerchandise'],
             'admin/modify/merchandise'=>['ShopController','modifyMerchandise'],
+            'admin/orders'=>['OrderController','adminShowOrders'],
+            'admin/orders/operations'=>['OrderController','ordersOperations'],
         ]
     ];
 
