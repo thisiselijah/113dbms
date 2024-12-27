@@ -33,7 +33,7 @@ if (isset($data) && is_array($data)) {
             max-width: 600px;
             background: #fff;
             padding: 30px;
-            margin: 50px auto;
+            margin: 50px auto;  
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }

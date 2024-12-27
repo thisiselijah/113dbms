@@ -34,6 +34,7 @@ class ShopController extends Controller{
             'categories' => $categories,
             'merchandises' => $merchandises,
             'merchandisesCount' => $this->merchandiseModel->getAllMerchandiseCount(),
+            'identity' => $_SESSION['identity'],
         ];
         $this->view('merchandises', $data);
     }
@@ -115,5 +116,29 @@ class ShopController extends Controller{
 
     }
 
+    public function showModifyMerchandise(){
+        $getData = $this->retrieveGetData();
+        $merchandises = $this->merchandiseModel->getMerchandiseById($getData['id']);
+        $category = $this->categoryModel->getCategory();
+        $data =[
+            'merchandises' => $merchandises,
+            'category' => $category
+        ];
+        $this->view('admin-modify-merchandise',$data);
+    }
 
+    public function modifyMerchandise(){
+        $postData = $this->retrievePostData();
+        // 圖片上傳處理
+        $uploadDir = 'assets/img/product/';
+        $category = $this->categoryModel->getNameIdById($postData['category']);
+        $uploadDir .= $category ['name']."/";
+        $uploadFile = $uploadDir . basename($_FILES['image']['name']);
+        $imagePath = '';
+        $imagePath = move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile) ? $uploadFile : die("圖片上傳失敗！");
+        $postData['image_path'] = $imagePath;
+        print_r($postData);
+        $this->merchandiseModel->updateMerchandise($postData);
+        $this->redirect(".\?url=show/merchandises");
+    }
 }

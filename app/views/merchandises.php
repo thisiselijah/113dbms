@@ -2,7 +2,7 @@
 $categories = $data['categories'];
 $merchandises = $data['merchandises'];
 // 商品生成函數
-function generateMerchandiseHTML($merchandises)
+function generateMerchandiseHTML($merchandises, $data)
 {
     $content = '';
     if (empty($merchandises)) {
@@ -11,6 +11,15 @@ function generateMerchandiseHTML($merchandises)
             <div><img src="https://uploads.dailydot.com/2018/10/olli-the-polite-cat.jpg?q=65&auto=format&w=1600&ar=2:1&fit=crop"/><div>';
     }
     foreach ($merchandises as $product) {
+        $modifyButton = '';
+        if (isset($data['identity']) && $data['identity'] === 'admin') {
+            $modifyButton = <<<HTML
+            <a href="./?url=admin/show/modify/merchandise&id={$product['id']}" class="btn btn-warning btn-sm mt-2">
+                修改
+            </a>
+            HTML;
+        }
+    
         $content .= <<<HTML
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <article class="single_product">
@@ -20,6 +29,7 @@ function generateMerchandiseHTML($merchandises)
                                 <img src="{$product['image_path']}" alt="{$product['name']}">
                             </a>
                             <div class="label_product">
+                                {$modifyButton}
                                 <span class="label_sale">Sale</span>
                             </div>
                         </div>
@@ -27,15 +37,17 @@ function generateMerchandiseHTML($merchandises)
                             <h4><a href="single-product.php?id={$product['id']}">{$product['name']}</a></h4>
                             <div class="price_box"> 
                                 <span class="current_price">NT {$product['price']}</span>
+                                
                             </div>
                         </figcaption>  
                     </figure>
                 </article>
             </div>
-            HTML;
+        HTML;
     }
     return $content;
 }
+
 
 // 類別生成函數
 function generateCategoryHTML($categories, $category_mapping)
@@ -69,7 +81,7 @@ $category_mapping = [
     'bedding' => '臥室',
     'lamps' => '燈具'
 ];
-$merchandise_content = generateMerchandiseHTML($merchandises);
+$merchandise_content = generateMerchandiseHTML($merchandises,$data);
 $merchandiseCategories = generateCategoryHTML($categories, $category_mapping);
 $merchandises = <<<HTML
     <div class="row">
