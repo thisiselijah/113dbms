@@ -34,6 +34,10 @@
                                         } else {
                                             echo '<li><a href="?url=loginPage">Log in</a></li>';
                                         }
+                                        if(isset($_SESSION['identity'])&&$_SESSION['identity']=='admin'){
+                                            echo '<li><a href="?url=admin/show/new/merchandise">新增商品</a></li>';
+                                            echo '<li><a href="?url=admin/orders">訂單管理</a></li>';
+                                        }
                                         ?>
                                     </ul>
                                 </li>

@@ -5,6 +5,7 @@ class OrderController extends Controller{
     private mixed $orderItemsModel;
     private mixed $merchandiseModel;
     private mixed $merchandiseReviews;
+    private mixed $userModel;
 
     public function __construct() {
         $this->orderItemsModel = $this->model('Order_items');
@@ -40,5 +41,34 @@ class OrderController extends Controller{
         $this->merchandiseReviews->insertReviews($postData['user_id'],$postData['merchandise_id'],$postData['comment'],$postData['rank']);
         $this->orderItemsModel->updateReviewStatus($postData['order_id'],$postData['merchandise_id'],$postData['review_status']);
         $this->redirect('./?url=user/orders');
+    }
+
+    public function adminShowOrders(){
+        $this->merchandiseModel = $this->model('Merchandises');
+        $getData = $this->retrieveGetData();
+        $order_items = isset($getData['order_id']) 
+            ? array_map(function($order_item) {
+                $merchandise = $this->merchandiseModel->getMerchandiseNamePricePathById($order_item['merchandise_id']);
+                if ($merchandise) {
+                    $order_item['name'] = $merchandise['name'];
+                    $order_item['price'] = $merchandise['price'];
+                    $order_item['image_path'] = $merchandise['image_path'];
+                }
+                return $order_item;
+            }, $this->orderItemsModel->retrieveOrderItemsByOrderId($getData['order_id'])) 
+            : [];
+
+        $data = [
+            'orders' => $this->ordersModel->retrieveOrders(),
+            'order_items' => $order_items,
+
+        ];
+        $this->view('admin-orderList', $data);
+    }
+
+    public function ordersOperations(){
+        $getData = $this->retrieveGetData();
+        $this->ordersModel->updateOrderStatus($getData['operation'],$getData['order_id']);
+        $this->redirect('./?url=admin/orders');
     }
 }
