@@ -51,12 +51,14 @@ class ShopController extends Controller{
                 'categories' => $this->merchandiseModel->getAllMerchandiseCategoryCount(),
                 'merchandises' => $merchandises,
                 'merchandisesCount' => count($merchandises),
+                'identity'=>$_SESSION['identity'],
             ]);
         }
         $data = [
             'categories' => $this->merchandiseModel->getAllMerchandiseCategoryCount(),
             'merchandises' => $merchandises,
             'merchandisesCount' => count($merchandises),
+            'identity'=>$_SESSION['identity'],
         ];
         $this->view('merchandises', $data);
         
