@@ -28,12 +28,13 @@ if (isset($data['orders']) && is_array($data['orders'])) {
         // 根據訂單狀態決定是否顯示操作按鈕
         $actionButtons = '';
         if ($order['status'] === 'confirmed') {
-            // 使用 <a> 標籤並添加 disabled 屬性
+            // 添加「完成訂單」和「取消訂單」按鈕
             $actionButtons = <<<HTML
-                <a href="#" class="btn btn-success btn-sm confirm-button disabled" aria-disabled="true" tabindex="-1" data-order-id="{$orderId}">已確認</a>
+                <a href="#" class="btn btn-success btn-sm complete-button" data-order-id="{$orderId}">完成訂單</a>
                 <a href="#" class="btn btn-danger btn-sm cancel-button" data-order-id="{$orderId}">取消訂單</a>
             HTML;
         } elseif ($order['status'] === 'processing') {
+            // 添加「確認訂單」和「取消訂單」按鈕
             $actionButtons = <<<HTML
                 <a href="#" class="btn btn-primary btn-sm confirm-button" data-order-id="{$orderId}">確認訂單</a>
                 <a href="#" class="btn btn-danger btn-sm cancel-button" data-order-id="{$orderId}">取消訂單</a>
@@ -45,8 +46,8 @@ if (isset($data['orders']) && is_array($data['orders'])) {
 
         // 處理詳細訂單項目
         $detailsHTML = '';
-        if (isset($data['order_items']) && is_array($data['order_items'])) {
-            foreach ($data['order_items'] as $item) {
+        if (isset($data['order_items'][$orderId]) && is_array($data['order_items'][$orderId])) {
+            foreach ($data['order_items'][$orderId] as $item) {
                 $itemName = htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8');
                 $itemPrice = htmlspecialchars(number_format($item['price'], 2), ENT_QUOTES, 'UTF-8');
                 $quantity = htmlspecialchars($item['quantity'], ENT_QUOTES, 'UTF-8');
@@ -173,12 +174,31 @@ if (isset($data['orders']) && is_array($data['orders'])) {
                     // 設定模態框的內容
                     document.getElementById("confirmationModalLabel").innerText = "確認訂單";
                     document.getElementById("modalBodyText").innerText = `確定要確認訂單 #${orderId} 嗎？`;
-                    // 設定確認按鈕的連結
+                    // 設定確認按鈕的連結，並附加 CSRF Token
                     document.getElementById("modalConfirmButton").href = `./?url=admin/orders/operations&order_id=${orderId}&operation=confirmed`;
                     // 顯示模態框
                     $('#confirmationModal').modal('show');
                 });
             }
+        });
+
+        // 處理完成訂單按鈕點擊事件
+        document.querySelectorAll(".complete-button").forEach(button => {
+            button.addEventListener("click", function (event) {
+                event.preventDefault(); // 防止默認行為
+                const orderId = this.getAttribute("data-order-id");
+                if (!orderId) {
+                    alert("無法獲取訂單 ID。");
+                    return;
+                }
+                // 設定模態框的內容
+                document.getElementById("confirmationModalLabel").innerText = "完成訂單";
+                document.getElementById("modalBodyText").innerText = `確定要完成訂單 #${orderId} 嗎？`;
+                // 設定確認按鈕的連結，並附加 CSRF Token
+                document.getElementById("modalConfirmButton").href = `./?url=admin/orders/operations&order_id=${orderId}&operation=completed`;
+                // 顯示模態框
+                $('#confirmationModal').modal('show');
+            });
         });
 
         // 處理取消訂單按鈕點擊事件
@@ -193,7 +213,7 @@ if (isset($data['orders']) && is_array($data['orders'])) {
                 // 設定模態框的內容
                 document.getElementById("confirmationModalLabel").innerText = "取消訂單";
                 document.getElementById("modalBodyText").innerText = `確定要取消訂單 #${orderId} 嗎？`;
-                // 設定確認按鈕的連結
+                // 設定確認按鈕的連結，並附加 CSRF Token
                 document.getElementById("modalConfirmButton").href = `./?url=admin/orders/operations&order_id=${orderId}&operation=canceled`;
                 // 顯示模態框
                 $('#confirmationModal').modal('show');
@@ -203,8 +223,8 @@ if (isset($data['orders']) && is_array($data['orders'])) {
         // 處理訂單編號點擊以顯示詳細資訊
         document.querySelectorAll(".toggle-details").forEach(link => {
             link.addEventListener("click", function (event) {
-                // 不阻止默認行為，允許重定向
-                // 若不需要 JavaScript 處理顯示詳細資訊，可刪除此處
+                // 允許默認行為，重定向到指定 URL
+                // 如果需要其他操作，可以在此處添加
             });
         });
     });

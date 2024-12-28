@@ -30,11 +30,12 @@ class ShopController extends Controller{
         $merchandises = isset($getData['category_id']) && !empty($getData['category_id']) 
             ? $this->merchandiseModel->getMerchandisesByCategoryId($getData['category_id'],isset($getData['page']) ? (int)$getData['page'] : 1) 
             : $this->merchandiseModel->getLimitMerchandises(isset($getData['page']) ? (int)$getData['page'] : 1);
+        $identity = isset($_SESSION['identity']) ? $_SESSION['identity'] : null;
         $data = [
             'categories' => $categories,
             'merchandises' => $merchandises,
             'merchandisesCount' => $this->merchandiseModel->getAllMerchandiseCount(),
-            'identity' => $_SESSION['identity'],
+            'identity' => $identity,
         ];
         $this->view('merchandises', $data);
     }
@@ -131,16 +132,65 @@ class ShopController extends Controller{
 
     public function modifyMerchandise(){
         $postData = $this->retrievePostData();
-        // 圖片上傳處理
-        $uploadDir = 'assets/img/product/';
-        $category = $this->categoryModel->getNameIdById($postData['category']);
-        $uploadDir .= $category ['name']."/";
-        $uploadFile = $uploadDir . basename($_FILES['image']['name']);
-        $imagePath = '';
-        $imagePath = move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile) ? $uploadFile : die("圖片上傳失敗！");
+        $currentMerchandise = $this->merchandiseModel->getMerchandiseById($postData['id']);
+        if (!$currentMerchandise) {
+            die("無效的商品 ID！");
+        }
+        $currentCategoryId = $currentMerchandise['category'];
+        $currentImagePath = $currentMerchandise['image_path'];
+
+        $newCategoryId = $postData['category'];
+        $categoryChanged = ($currentCategoryId != $newCategoryId);
+        $newCategory = $this->categoryModel->getNameIdById($newCategoryId);
+        if (!$newCategory) {
+            die("無效的分類 ID！");
+        }
+        $newCategoryName = $newCategory['name'];
+        $uploadDir = 'assets/img/product/' . $newCategoryName . '/';
+        if (!is_dir($uploadDir)) {
+            if (!mkdir($uploadDir, 0755, true)) {
+                die("無法創建目標資料夾！");
+            }
+        }
+
+        $imagePath = $currentImagePath;
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            $fileMimeType = mime_content_type($_FILES['image']['tmp_name']);
+            if (!in_array($fileMimeType, $allowedMimeTypes)) {
+                die("無效的圖片格式。只允許 JPG, PNG, GIF 格式。");
+            }
+            $fileExtension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $uniqueFileName = uniqid('img_', true) . '.' . $fileExtension;
+
+            $uploadFile = $uploadDir . $uniqueFileName;
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
+                if ($currentImagePath && file_exists($currentImagePath)) {
+                    unlink($currentImagePath);
+                }
+                $imagePath = $uploadFile;
+            } else {
+                die("圖片上傳失敗！");
+            }
+        } else {
+            if ($categoryChanged) {
+                if ($currentImagePath && file_exists($currentImagePath)) {
+                    $imageFileName = basename($currentImagePath);
+                    $newImagePath = $uploadDir . $imageFileName;
+                    if (rename($currentImagePath, $newImagePath)) {
+                        $imagePath = $newImagePath;
+                    } else {
+                        die("圖片移動失敗！");
+                    }
+                }
+            }
+        }
         $postData['image_path'] = $imagePath;
-        print_r($postData);
-        $this->merchandiseModel->updateMerchandise($postData);
-        $this->redirect(".\?url=show/merchandises");
+        $updateResult = $this->merchandiseModel->updateMerchandise($postData);
+        if ($updateResult) {
+            $this->redirect("./?url=show/merchandises");
+        } else {
+            die("更新商品失敗！");
+        }
     }
 }

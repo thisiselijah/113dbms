@@ -93,7 +93,7 @@ $totalAmountFormatted = number_format($totalAmount, 2);
                         <label for="payment">付款方式</label>
                         <select id="payment" name="payment" required>
                             <option value="" disabled selected>請選擇支付方式</option>
-                            <option value="cash_on_delivery">貨到付款</option>
+                            <option value="cash_on_delivery">現金付款</option>
                         </select>
                     </div>
 
