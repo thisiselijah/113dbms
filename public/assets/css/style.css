@@ -6359,3 +6359,22 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 /*單一商品頁的評分 包括商品和評論  結束*/
+
+
+/*購物車商品數量*/
+.cart_count {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: orange; /* 背景色 */
+  color: rgb(255, 255, 255); /* 字體顏色 */
+  font-size: 12px; /* 字體大小 */
+  font-weight: bold;
+  width: 20px; /* 圓形的寬度 */
+  height: 20px; /* 圓形的高度 */
+  line-height: 20px; /* 確保文字垂直居中 */
+  text-align: center; /* 文字水平居中 */
+  border-radius: 50%; /* 圓形 */
+  display: none; /* 默認隱藏 */
+}
+
