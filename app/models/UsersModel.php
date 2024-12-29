@@ -14,17 +14,22 @@ class UsersModel {
     }
 
     public function getUsersByUsername($account, $password) {
-        $query = "SELECT * FROM Users WHERE account = :account AND password = :password";
+        $query = "SELECT * FROM Users WHERE account = :account";
         $this->db->query($query);
         $this->db->bind(':account', $account);
-        $this->db->bind(':password', $password);
-        $result = $this->db->getSingle();
-        return $result;
-    }
+        $user = $this->db->getSingle();
 
+        if ($user && password_verify($password, $user['password'])) {
+            return $user;
+        } else {
+            return false;
+        }
+    }
 
     // 新增使用者至資料庫
     public function addUser($account, $password, $name, $email, $phone_number) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
         $query = "INSERT INTO Users (account, password, name, email, phone_number, identity)
                 SELECT :account, :password, :name, :email, :phone_number, :identity
                 WHERE NOT EXISTS (
@@ -33,7 +38,7 @@ class UsersModel {
                 
         $this->db->query($query);
         $this->db->bind(':account', $account);
-        $this->db->bind(':password', $password);
+        $this->db->bind(':password', $hashedPassword);
         $this->db->bind(':name', $name);
         $this->db->bind(':email', $email);
         $this->db->bind(':phone_number', $phone_number);
@@ -42,8 +47,7 @@ class UsersModel {
         $this->db->execute();
     }
 
-
-    //判斷帳號是否已存在
+    // 判斷帳號是否已存在
     public function isAccountExists($account) {
         $query = "SELECT * FROM Users WHERE account = :account";
         $this->db->query($query);
@@ -51,8 +55,5 @@ class UsersModel {
         $result = $this->db->getSingle();
         return $result > 0;
     }
-    
-    
-       
 }
 ?>
