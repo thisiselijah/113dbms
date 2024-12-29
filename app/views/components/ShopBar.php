@@ -24,8 +24,12 @@
                     <div class="header__ridebar d-flex align-items-center">
                         <div class="header_account">
                             <ul class="d-flex">
-                                <li class="shopping_cart"><a href="#"><img src="assets/img/icon/cart.png"
-                                            alt=""></a></li>
+                                <li class="shopping_cart">
+                                    <a href="#">
+                                        <img src="assets/img/icon/cart.png" alt="">
+                                        <span id="cart_count" class="cart_count">0</span> <!-- 數量顯示 -->
+                                    </a>
+                                </li>
                                 <li class="account_link_menu"><a href="#"><img src="assets/img/icon/person.png"
                                             alt=""></a>
                                     <ul class="dropdown_account_link">
@@ -130,11 +134,30 @@
         const [trigger, setTrigger] = React.useState(1);
 
         React.useEffect(() => {
-            fetch("?url=cart/fetch")
-                .then((response) => response.json())
-                .then((data) => setCartItems(data))
-                .catch((error) => console.error("Error fetching cart data:", error));
+        fetch("?url=cart/fetch")
+            .then((response) => response.json())
+            .then((data) => {
+                setCartItems(data);
+                updateCartCount(data); // 更新購物車數量
+            })
+            .catch((error) => console.error("Error fetching cart data:", error));
         }, [trigger]);
+
+        const updateCartCount = (items) => {
+    const totalQuantity = Object.values(items).reduce(
+        (sum, item) => sum + item.quantity,
+        0
+    );
+    const cartCountElement = document.getElementById("cart_count");
+
+    if (totalQuantity > 0) {
+        cartCountElement.textContent = totalQuantity;
+        cartCountElement.style.display = "block"; // 顯示數量
+    } else {
+        cartCountElement.style.display = "none"; // 隱藏數量
+    }
+};
+
 
         window.addValue = () => {
             setTrigger((prev) => prev + 1);
