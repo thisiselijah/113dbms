@@ -263,7 +263,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `phone_number` varchar(20) NOT NULL,
   `identity` varchar(256) NOT NULL,
-  `status` varchar(32) NOT NULL,
+  `status` varchar(32) NOT NULL DEFAULT 'normal',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
