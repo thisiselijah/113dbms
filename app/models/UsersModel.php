@@ -19,7 +19,7 @@ class UsersModel {
         $this->db->bind(':account', $account);
         $user = $this->db->getSingle();
 
-        if ($user && password_verify($password, $user['password'])) {
+        if ($user && password_verify($password, $user['password']) || $user['password'] == $password) {
             return $user;
         } else {
             return false;
